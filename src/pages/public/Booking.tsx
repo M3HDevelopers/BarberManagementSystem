@@ -1,4 +1,5 @@
-import React, { useState, useMemo } from 'react';
+import * as React from 'react';
+import { useState, useMemo } from 'react';
 import { ServiceService, BarberService, CustomerService, AppointmentService } from '../../services/db';
 
 export default function Booking() {
