@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useState } from 'react';
 import { ServiceService, ProductService, BarberService, CustomerService, InvoiceService } from '../../services/db';
 import { InvoiceItem, PaymentMethod } from '../../types';
 

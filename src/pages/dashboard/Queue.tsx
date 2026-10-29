@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { QueueService, CustomerService, BarberService, ServiceService } from '../../services/db';
 import { QueueEntry } from '../../types';
 

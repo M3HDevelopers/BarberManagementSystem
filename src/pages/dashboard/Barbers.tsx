@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useState } from 'react';
 import { BarberService, ReportService } from '../../services/db';
 import { Barber } from '../../types';
 
