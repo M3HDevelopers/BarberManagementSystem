@@ -164,6 +164,15 @@
   animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+@keyframes slow-zoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+
+.animate-slow-zoom {
+  animation: slow-zoom 20s ease-in-out infinite alternate;
+}
+
 /* Marquee Animation */
 @keyframes marquee {
   0% {

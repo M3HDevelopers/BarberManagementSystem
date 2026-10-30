@@ -73,19 +73,13 @@ export default function Home() {
     <div className="animate-fade-up">
       {/* Hero Section — Full Background with Centered Text */}
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Video */}
+        {/* Background Image with Animation */}
         <div className="absolute inset-0">
-          <video 
-            autoPlay 
-            loop 
-            muted 
-            playsInline
-            poster="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=1920&q=80"
-            className="w-full h-full object-cover"
-          >
-            <source src="https://videos.pexels.com/video-files/5765827/5765827-uhd_2560_1440_30fps.mp4" type="video/mp4" />
-            <source src="https://videos.pexels.com/video-files/5765826/5765826-hd_1920_1080_30fps.mp4" type="video/mp4" />
-          </video>
+          <img 
+            src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=1920&q=80" 
+            alt="Barber at work"
+            className="w-full h-full object-cover animate-slow-zoom"
+          />
           <div className="absolute inset-0 bg-void/60" />
         </div>
         
