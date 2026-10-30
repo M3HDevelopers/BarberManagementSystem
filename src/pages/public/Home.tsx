@@ -352,22 +352,113 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Cream Section 2 - Testimonial */}
+      {/* Testimonials Section */}
       <section className="py-32 bg-brass">
         <div className="container-fluid">
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="text-caption text-void/60 mb-8 tracking-[0.08em] uppercase">What They Say</p>
-            <blockquote className="font-display text-heading-xl leading-[1.2] tracking-[-0.02em] text-void mb-12 text-balance">
-              "I've been coming here for five years. It's not just a haircut — it's the conversation, the attention to detail, the feeling that someone actually cares about how you look. There's nowhere else like it."
-            </blockquote>
-            <div className="flex items-center justify-center gap-4">
-              <div className="w-12 h-12 bg-void/10 flex items-center justify-center">
-                <span className="font-display text-heading-sm text-void">M</span>
+          <div className="text-center mb-16">
+            <p className="text-caption text-void/60 mb-4 tracking-[0.08em] uppercase">What They Say</p>
+            <h2 className="font-display text-heading-xl leading-[1.1] tracking-[-0.02em] text-void text-balance">
+              Trusted by our clients.
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="bg-void/5 p-8">
+              <blockquote className="font-display text-heading-md leading-[1.3] tracking-[-0.01em] text-void mb-6">
+                "I've been coming here for five years. It's not just a haircut — it's the conversation, the attention to detail."
+              </blockquote>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-void/10 flex items-center justify-center">
+                  <span className="font-display text-body font-medium text-void">M</span>
+                </div>
+                <div>
+                  <p className="text-body-sm font-medium text-void">Marcus Chen</p>
+                  <p className="text-caption text-void/60">Client since 2019</p>
+                </div>
               </div>
-              <div className="text-left">
-                <p className="text-body font-medium text-void">Marcus Chen</p>
-                <p className="text-body-sm text-void/70">Client since 2019</p>
+            </div>
+            <div className="bg-void/5 p-8">
+              <blockquote className="font-display text-heading-md leading-[1.3] tracking-[-0.01em] text-void mb-6">
+                "The best barbershop in town. Tony always knows exactly what I want. Professional, friendly, and consistent."
+              </blockquote>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-void/10 flex items-center justify-center">
+                  <span className="font-display text-body font-medium text-void">J</span>
+                </div>
+                <div>
+                  <p className="text-body-sm font-medium text-void">James Rodriguez</p>
+                  <p className="text-caption text-void/60">Client since 2020</p>
+                </div>
               </div>
+            </div>
+            <div className="bg-void/5 p-8">
+              <blockquote className="font-display text-heading-md leading-[1.3] tracking-[-0.01em] text-void mb-6">
+                "Finally found a place where I feel comfortable. The atmosphere is great and the cuts are always on point."
+              </blockquote>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-void/10 flex items-center justify-center">
+                  <span className="font-display text-body font-medium text-void">D</span>
+                </div>
+                <div>
+                  <p className="text-body-sm font-medium text-void">David Thompson</p>
+                  <p className="text-caption text-void/60">Client since 2021</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section className="py-32 bg-void">
+        <div className="container-fluid">
+          <div className="text-center mb-16">
+            <p className="text-caption text-brass mb-4 tracking-[0.08em] uppercase">Our Work</p>
+            <h2 className="font-display text-heading-xl leading-[1.1] tracking-[-0.02em] text-cream text-balance">
+              The gallery.
+            </h2>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="aspect-square bg-dark-100 overflow-hidden group cursor-pointer">
+              <img 
+                src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80" 
+                alt="Barbershop tools"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <div className="aspect-square bg-dark-100 overflow-hidden group cursor-pointer">
+              <img 
+                src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=600&q=80" 
+                alt="Barbershop interior"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <div className="aspect-square bg-dark-100 overflow-hidden group cursor-pointer">
+              <img 
+                src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&q=80" 
+                alt="Barber at work"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <div className="aspect-square bg-dark-100 overflow-hidden group cursor-pointer">
+              <img 
+                src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80" 
+                alt="Precision haircut"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <div className="aspect-square bg-dark-100 overflow-hidden group cursor-pointer md:col-span-2">
+              <img 
+                src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=800&q=80" 
+                alt="Barber styling"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <div className="aspect-square bg-dark-100 overflow-hidden group cursor-pointer md:col-span-2">
+              <img 
+                src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=800&q=80" 
+                alt="Classic barbershop"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
             </div>
           </div>
         </div>
