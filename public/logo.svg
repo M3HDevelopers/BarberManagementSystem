@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Outer Circle -->
+  <circle cx="100" cy="100" r="95" stroke="#c9a96e" stroke-width="2"/>
+  <circle cx="100" cy="100" r="88" stroke="#c9a96e" stroke-width="1"/>
+  
+  <!-- Inner decorative circle -->
+  <circle cx="100" cy="100" r="75" stroke="#c9a96e" stroke-width="0.5" stroke-dasharray="2 4"/>
+  
+  <!-- Scissors (left) -->
+  <g transform="translate(60, 65) rotate(-30)">
+    <!-- Blade 1 -->
+    <path d="M 0 0 L 50 -8 L 52 -5 L 5 5 Z" fill="#c9a96e"/>
+    <!-- Blade 2 -->
+    <path d="M 0 0 L 50 8 L 52 5 L 5 -5 Z" fill="#b8944d"/>
+    <!-- Handle ring 1 -->
+    <circle cx="-8" cy="-6" r="8" stroke="#c9a96e" stroke-width="2.5" fill="none"/>
+    <!-- Handle ring 2 -->
+    <circle cx="-8" cy="6" r="8" stroke="#c9a96e" stroke-width="2.5" fill="none"/>
+    <!-- Pivot -->
+    <circle cx="0" cy="0" r="3" fill="#c9a96e"/>
+  </g>
+  
+  <!-- Straight Razor (right) -->
+  <g transform="translate(95, 110) rotate(30)">
+    <!-- Handle -->
+    <rect x="0" y="-5" width="45" height="10" fill="#c9a96e" rx="1"/>
+    <rect x="2" y="-3" width="41" height="6" fill="#b8944d" rx="0.5"/>
+    <!-- Blade -->
+    <path d="M 45 -5 L 90 -3 L 92 0 L 90 3 L 45 5 Z" fill="#c9a96e"/>
+    <path d="M 45 -3 L 88 -1 L 88 1 L 45 3 Z" fill="#d4b87a"/>
+    <!-- Pivot -->
+    <circle cx="45" cy="0" r="4" fill="#c9a96e"/>
+    <circle cx="45" cy="0" r="2" fill="#0a0908"/>
+  </g>
+  
+  <!-- Top text arc: IRON & BLADE -->
+  <defs>
+    <path id="topArc" d="M 30 100 A 70 70 0 0 1 170 100"/>
+    <path id="bottomArc" d="M 35 110 A 65 65 0 0 0 165 110"/>
+  </defs>
+  <text font-family="Georgia, serif" font-size="11" fill="#c9a96e" letter-spacing="4">
+    <textPath href="#topArc" startOffset="50%" text-anchor="middle">IRON &amp; BLADE</textPath>
+  </text>
+  
+  <!-- Bottom text: EST. 2009 -->
+  <text font-family="Georgia, serif" font-size="9" fill="#c9a96e" letter-spacing="3">
+    <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">EST. 2009</textPath>
+  </text>
+  
+  <!-- Small decorative dots -->
+  <circle cx="30" cy="100" r="2" fill="#c9a96e"/>
+  <circle cx="170" cy="100" r="2" fill="#c9a96e"/>
+</svg>

@@ -1,0 +1,210 @@
+@import "tailwindcss";
+
+@theme {
+  /* Typography - Three Tier Token System */
+  
+  /* Tier 1: Primitive Scale (Perfect Fourth Ratio: 1.333) */
+  --font-size-xs: 0.75rem;      /* 12px */
+  --font-size-sm: 0.875rem;     /* 14px */
+  --font-size-base: 1rem;       /* 16px */
+  --font-size-lg: 1.333rem;     /* 21.3px */
+  --font-size-xl: 1.777rem;     /* 28.4px */
+  --font-size-2xl: 2.369rem;    /* 37.9px */
+  --font-size-3xl: 3.157rem;    /* 50.5px */
+  --font-size-4xl: 4.209rem;    /* 67.3px */
+  --font-size-5xl: 5.61rem;     /* 89.7px */
+  
+  /* Tier 2: Semantic Tokens */
+  --text-caption: var(--font-size-xs);
+  --text-body-sm: var(--font-size-sm);
+  --text-body: var(--font-size-base);
+  --text-lead: 1.125rem;        /* 18px */
+  --text-heading-sm: var(--font-size-lg);
+  --text-heading-md: var(--font-size-xl);
+  --text-heading-lg: var(--font-size-2xl);
+  --text-heading-xl: var(--font-size-3xl);
+  --text-display: var(--font-size-4xl);
+  --text-hero: var(--font-size-5xl);
+  
+  /* Fluid Typography with clamp() */
+  --fluid-body: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --fluid-heading: clamp(1.777rem, 1.5rem + 1.5vw, 3.157rem);
+  --fluid-display: clamp(2.369rem, 1.8rem + 3vw, 5.61rem);
+  --fluid-hero: clamp(3.157rem, 2rem + 5vw, 8rem);
+  
+  /* Typeface Selection - Formula 2: Categorical Contrast */
+  /* Display: Fraunces (warm editorial serif with character) */
+  /* Body: Inter (high-legibility workhorse sans) */
+  --font-display: 'Fraunces', 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  
+  /* Color System */
+  --color-void: #0a0908;
+  --color-dark-100: #1a1816;
+  --color-dark-200: #2a2725;
+  --color-dark-300: #3a3633;
+  --color-dark-400: #4a4541;
+  
+  --color-cream: #f3f1eb;
+  --color-cream-muted: #b5ad99;
+  --color-cream-dim: #8a847d;
+  
+  --color-brass: #c9a96e;
+  --color-brass-light: #d4b87a;
+  --color-brass-dark: #b8944d;
+}
+
+@layer base {
+  * {
+    border-radius: 0 !important;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-void);
+    color: var(--color-cream);
+    font-family: var(--font-body);
+    font-size: var(--fluid-body);
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'kern' 1, 'liga' 1;
+  }
+
+  /* iOS zoom prevention - 16px minimum */
+  input, select, textarea {
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: inherit;
+  }
+
+  @media (min-width: 768px) {
+    input, select, textarea {
+      font-size: 14px;
+    }
+  }
+
+  /* Focus rings - accessible */
+  :focus-visible {
+    outline: 2px solid var(--color-brass);
+    outline-offset: 2px;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--color-void); }
+  ::-webkit-scrollbar-thumb { background: var(--color-dark-300); }
+
+  /* Selection */
+  ::selection {
+    background: var(--color-brass);
+    color: var(--color-void);
+  }
+}
+
+@layer utilities {
+  /* Typography Utilities */
+  .font-display {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  /* Measure - constrain line length for readability */
+  .measure-prose {
+    max-width: 65ch;
+  }
+
+  .measure-narrow {
+    max-width: 45ch;
+  }
+
+  /* Tabular numbers for data */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Text wrapping - prevent orphans and widows */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Container */
+  .container-fluid {
+    width: 100%;
+    max-width: 1400px;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 5vw, 3rem);
+  }
+
+  .separator {
+    border-color: var(--color-dark-200);
+  }
+}
+
+/* Animation */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes slow-zoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+
+.animate-slow-zoom {
+  animation: slow-zoom 20s ease-in-out infinite alternate;
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-container {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.marquee-content {
+  display: flex;
+  flex-wrap: nowrap;
+  animation: marquee 30s linear infinite;
+  width: fit-content;
+  padding-inline: 4rem;
+}
+
+.marquee-content:hover {
+  animation-play-state: paused;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
