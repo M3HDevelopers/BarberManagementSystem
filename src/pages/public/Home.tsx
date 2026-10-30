@@ -116,32 +116,32 @@ export default function Home() {
       </section>
 
       {/* Marquee 1 - Services */}
-      <section className="py-8 bg-cream border-y border-cream/20">
+      <section className="py-8 bg-brass">
         <div className="marquee-container">
           <div className="marquee-content">
             <div className="flex items-center gap-12 px-6">
               <span className="font-display text-display text-void tracking-[-0.02em]">Classic Cut</span>
-              <span className="text-brass text-4xl">✦</span>
+              <span className="text-void/40 text-4xl">✦</span>
               <span className="font-display text-display text-void tracking-[-0.02em]">Fade & Taper</span>
-              <span className="text-brass text-4xl">✦</span>
+              <span className="text-void/40 text-4xl">✦</span>
               <span className="font-display text-display text-void tracking-[-0.02em]">Beard Trim</span>
-              <span className="text-brass text-4xl">✦</span>
+              <span className="text-void/40 text-4xl">✦</span>
               <span className="font-display text-display text-void tracking-[-0.02em]">Hot Towel Shave</span>
-              <span className="text-brass text-4xl">✦</span>
+              <span className="text-void/40 text-4xl">✦</span>
               <span className="font-display text-display text-void tracking-[-0.02em]">Hair Design</span>
-              <span className="text-brass text-4xl">✦</span>
+              <span className="text-void/40 text-4xl">✦</span>
             </div>
             <div className="flex items-center gap-12 px-6">
               <span className="font-display text-display text-void tracking-[-0.02em]">Classic Cut</span>
-              <span className="text-brass text-4xl">✦</span>
+              <span className="text-void/40 text-4xl">✦</span>
               <span className="font-display text-display text-void tracking-[-0.02em]">Fade & Taper</span>
-              <span className="text-brass text-4xl">✦</span>
+              <span className="text-void/40 text-4xl">✦</span>
               <span className="font-display text-display text-void tracking-[-0.02em]">Beard Trim</span>
-              <span className="text-brass text-4xl">✦</span>
+              <span className="text-void/40 text-4xl">✦</span>
               <span className="font-display text-display text-void tracking-[-0.02em]">Hot Towel Shave</span>
-              <span className="text-brass text-4xl">✦</span>
+              <span className="text-void/40 text-4xl">✦</span>
               <span className="font-display text-display text-void tracking-[-0.02em]">Hair Design</span>
-              <span className="text-brass text-4xl">✦</span>
+              <span className="text-void/40 text-4xl">✦</span>
             </div>
           </div>
         </div>
@@ -196,7 +196,7 @@ export default function Home() {
       </section>
 
       {/* Cream Section 1 - The Craft */}
-      <section className="py-32 bg-cream">
+      <section className="py-32 bg-brass">
         <div className="container-fluid">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             <div className="lg:col-span-6">
@@ -204,15 +204,15 @@ export default function Home() {
               <h2 className="font-display text-heading-xl leading-[1.1] tracking-[-0.02em] text-void mb-8 text-balance">
                 The craft of conversation.
               </h2>
-              <p className="text-body text-void/70 leading-relaxed measure-prose mb-6 text-pretty">
+              <p className="text-body text-void/80 leading-relaxed measure-prose mb-6 text-pretty">
                 A haircut is more than a service. It's a moment of connection between two people who understand that precision matters. We believe in taking the time to listen, to understand what you want, and to deliver something that feels right.
               </p>
-              <p className="text-body text-void/70 leading-relaxed measure-prose text-pretty">
+              <p className="text-body text-void/80 leading-relaxed measure-prose text-pretty">
                 No rushing. No shortcuts. Just three barbers who care deeply about their craft and the people who sit in their chairs.
               </p>
             </div>
             <div className="lg:col-span-5 lg:col-start-8">
-              <div className="aspect-[4/5] bg-void/5 overflow-hidden">
+              <div className="aspect-[4/5] bg-void/10 overflow-hidden">
                 <img 
                   src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800&q=80" 
                   alt="Barber tools and craftsmanship"
@@ -278,39 +278,39 @@ export default function Home() {
       </section>
 
       {/* Marquee 2 - Experience */}
-      <section className="py-8 bg-cream border-y border-cream/20">
+      <section className="py-8 bg-brass">
         <div className="marquee-container">
           <div className="marquee-content" style={{ animationDirection: 'reverse' }}>
             <div className="flex items-center gap-12 px-6">
               <span className="font-display text-display text-void tracking-[-0.02em]">Since 2009</span>
-              <span className="text-brass text-4xl">✦</span>
+              <span className="text-void/40 text-4xl">✦</span>
               <span className="font-display text-display text-void tracking-[-0.02em]">Precision Craft</span>
-              <span className="text-brass text-4xl">✦</span>
+              <span className="text-void/40 text-4xl">✦</span>
               <span className="font-display text-display text-void tracking-[-0.02em]">Walk-ins Welcome</span>
-              <span className="text-brass text-4xl">✦</span>
+              <span className="text-void/40 text-4xl">✦</span>
               <span className="font-display text-display text-void tracking-[-0.02em]">No Shortcuts</span>
-              <span className="text-brass text-4xl">✦</span>
+              <span className="text-void/40 text-4xl">✦</span>
               <span className="font-display text-display text-void tracking-[-0.02em]">Three Barbers</span>
-              <span className="text-brass text-4xl">✦</span>
+              <span className="text-void/40 text-4xl">✦</span>
             </div>
             <div className="flex items-center gap-12 px-6">
               <span className="font-display text-display text-void tracking-[-0.02em]">Since 2009</span>
-              <span className="text-brass text-4xl">✦</span>
+              <span className="text-void/40 text-4xl">✦</span>
               <span className="font-display text-display text-void tracking-[-0.02em]">Precision Craft</span>
-              <span className="text-brass text-4xl">✦</span>
+              <span className="text-void/40 text-4xl">✦</span>
               <span className="font-display text-display text-void tracking-[-0.02em]">Walk-ins Welcome</span>
-              <span className="text-brass text-4xl">✦</span>
+              <span className="text-void/40 text-4xl">✦</span>
               <span className="font-display text-display text-void tracking-[-0.02em]">No Shortcuts</span>
-              <span className="text-brass text-4xl">✦</span>
+              <span className="text-void/40 text-4xl">✦</span>
               <span className="font-display text-display text-void tracking-[-0.02em]">Three Barbers</span>
-              <span className="text-brass text-4xl">✦</span>
+              <span className="text-void/40 text-4xl">✦</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* Cream Section 2 - Testimonial */}
-      <section className="py-32 bg-cream">
+      <section className="py-32 bg-brass">
         <div className="container-fluid">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-caption text-void/60 mb-8 tracking-[0.08em] uppercase">What They Say</p>
@@ -323,7 +323,7 @@ export default function Home() {
               </div>
               <div className="text-left">
                 <p className="text-body font-medium text-void">Marcus Chen</p>
-                <p className="text-body-sm text-void/60">Client since 2019</p>
+                <p className="text-body-sm text-void/70">Client since 2019</p>
               </div>
             </div>
           </div>
