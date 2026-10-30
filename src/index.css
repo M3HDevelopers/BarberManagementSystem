@@ -177,12 +177,14 @@
 .marquee-container {
   overflow: hidden;
   width: 100%;
+  position: relative;
 }
 
 .marquee-content {
   display: flex;
   animation: marquee 30s linear infinite;
   width: fit-content;
+  padding-inline: 4rem;
 }
 
 .marquee-content:hover {
