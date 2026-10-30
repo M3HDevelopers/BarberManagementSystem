@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SettingsService } from '../services/db';
 
 export default function PublicLayout({ children }: { children: React.ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const settings = SettingsService.get();
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const links = [
+    { href: '#home', label: 'Home' },
     { href: '#services', label: 'Services' },
     { href: '#barbers', label: 'Barbers' },
     { href: '#booking', label: 'Book' },
@@ -15,11 +25,20 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
   return (
     <div className="min-h-screen flex flex-col bg-void">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-void/95 backdrop-blur-md border-b border-dark-200">
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? 'bg-void/95 backdrop-blur-md border-b border-dark-200' : 'bg-transparent'
+      }`}>
         <div className="container-fluid">
           <div className="flex items-center justify-between h-20">
-            <a href="#" className="font-display text-[24px] leading-none tracking-[-0.01em] text-cream">
-              BarberPro
+            <a href="#home" className="flex items-center gap-3">
+              <img 
+                src="https://image.qwenlm.ai/generated-images/f162a29f-0b16-4a22-80e2-cad4b5f65ec7/_result.png" 
+                alt="BarberPro Logo" 
+                className="w-10 h-10 object-contain"
+              />
+              <span className="font-display text-[24px] leading-none tracking-[-0.01em] text-cream">
+                BarberPro
+              </span>
             </a>
 
             <nav className="hidden md:flex items-center gap-10">

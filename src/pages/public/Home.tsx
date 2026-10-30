@@ -71,51 +71,47 @@ export default function Home() {
 
   return (
     <div className="animate-fade-up">
-      {/* Hero Section — Asymmetric Editorial */}
-      <section id="home" className="relative min-h-screen overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-12 h-screen">
-          {/* Left: Typography */}
-          <div className="lg:col-span-7 bg-void flex flex-col justify-center px-6 md:px-12 lg:px-20 py-20 lg:py-0">
-            <div className="max-w-3xl">
-              <h1 className="font-display text-[56px] sm:text-[72px] lg:text-[104px] leading-[0.92] tracking-[-0.025em] text-cream mb-8">
-                Where craft meets conversation.
-              </h1>
-              <p className="text-[17px] text-cream-muted leading-relaxed measure-prose mb-12">
-                Since 2009, we've built a barbershop on the belief that a good haircut is not a transaction — it is a conversation between craft and client. Three barbers. One standard. No shortcuts, no rush, no compromise.
-              </p>
+      {/* Hero Section — Full Background with Centered Text */}
+      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=1920&q=80" 
+            alt="Professional barber at work"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-void/70" />
+        </div>
+        
+        {/* Centered Content */}
+        <div className="relative z-10 container-fluid text-center py-32">
+          <div className="max-w-4xl mx-auto">
+            <h1 className="font-display text-[56px] sm:text-[72px] lg:text-[104px] leading-[0.92] tracking-[-0.025em] text-cream mb-8">
+              Where craft meets conversation.
+            </h1>
+            <p className="text-[18px] text-cream-muted leading-relaxed measure-prose mx-auto mb-12">
+              Since 2009, we've built a barbershop on the belief that a good haircut is not a transaction — it is a conversation between craft and client. Three barbers. One standard. No shortcuts, no rush, no compromise.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="#booking"
                 className="inline-block px-10 py-5 bg-brass text-void text-[15px] font-semibold tracking-wide hover:bg-brass-light transition-colors"
               >
                 Book Your Appointment
               </a>
+              <a
+                href="#services"
+                className="inline-block px-10 py-5 border-2 border-cream/30 text-cream text-[15px] font-semibold tracking-wide hover:border-brass hover:text-brass transition-colors"
+              >
+                View Services
+              </a>
             </div>
           </div>
+        </div>
 
-          {/* Right: Image + Details */}
-          <div className="lg:col-span-5 relative overflow-hidden">
-            <img 
-              src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200&q=80" 
-              alt="Barber tools and craftsmanship"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-void via-void/20 to-transparent" />
-            
-            {/* Integrated details */}
-            <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-12">
-              <div className="space-y-6">
-                <div>
-                  <p className="text-[12px] text-cream-dim mb-1">Open today</p>
-                  <p className="text-[16px] text-cream font-medium">09:00 — 19:00</p>
-                </div>
-                <div className="w-px h-8 bg-cream/20" />
-                <div>
-                  <p className="text-[12px] text-cream-dim mb-1">Walk-ins</p>
-                  <p className="text-[16px] text-cream font-medium">Always welcome</p>
-                </div>
-              </div>
-            </div>
-          </div>
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10">
+          <div className="w-px h-16 bg-gradient-to-b from-transparent via-cream-muted to-transparent" />
         </div>
       </section>
 
