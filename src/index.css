@@ -182,6 +182,7 @@
 
 .marquee-content {
   display: flex;
+  flex-wrap: nowrap;
   animation: marquee 30s linear infinite;
   width: fit-content;
   padding-inline: 4rem;

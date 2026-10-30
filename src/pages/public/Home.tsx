@@ -120,28 +120,28 @@ export default function Home() {
         <div className="marquee-container">
           <div className="marquee-content">
             <div className="flex items-center gap-12 px-6">
-              <span className="font-display text-display text-void tracking-[-0.02em]">Classic Cut</span>
-              <span className="text-void/40 text-4xl">✦</span>
-              <span className="font-display text-display text-void tracking-[-0.02em]">Fade & Taper</span>
-              <span className="text-void/40 text-4xl">✦</span>
-              <span className="font-display text-display text-void tracking-[-0.02em]">Beard Trim</span>
-              <span className="text-void/40 text-4xl">✦</span>
-              <span className="font-display text-display text-void tracking-[-0.02em]">Hot Towel Shave</span>
-              <span className="text-void/40 text-4xl">✦</span>
-              <span className="font-display text-display text-void tracking-[-0.02em]">Hair Design</span>
-              <span className="text-void/40 text-4xl">✦</span>
+              <span className="font-display text-[clamp(2rem,5vw,4.209rem)] text-void tracking-[-0.02em] whitespace-nowrap">Classic Cut</span>
+              <span className="text-void/40 text-[clamp(1.5rem,3vw,2.5rem)] whitespace-nowrap">✦</span>
+              <span className="font-display text-[clamp(2rem,5vw,4.209rem)] text-void tracking-[-0.02em] whitespace-nowrap">Fade & Taper</span>
+              <span className="text-void/40 text-[clamp(1.5rem,3vw,2.5rem)] whitespace-nowrap">✦</span>
+              <span className="font-display text-[clamp(2rem,5vw,4.209rem)] text-void tracking-[-0.02em] whitespace-nowrap">Beard Trim</span>
+              <span className="text-void/40 text-[clamp(1.5rem,3vw,2.5rem)] whitespace-nowrap">✦</span>
+              <span className="font-display text-[clamp(2rem,5vw,4.209rem)] text-void tracking-[-0.02em] whitespace-nowrap">Hot Towel Shave</span>
+              <span className="text-void/40 text-[clamp(1.5rem,3vw,2.5rem)] whitespace-nowrap">✦</span>
+              <span className="font-display text-[clamp(2rem,5vw,4.209rem)] text-void tracking-[-0.02em] whitespace-nowrap">Hair Design</span>
+              <span className="text-void/40 text-[clamp(1.5rem,3vw,2.5rem)] whitespace-nowrap">✦</span>
             </div>
             <div className="flex items-center gap-12 px-6">
-              <span className="font-display text-display text-void tracking-[-0.02em]">Classic Cut</span>
-              <span className="text-void/40 text-4xl">✦</span>
-              <span className="font-display text-display text-void tracking-[-0.02em]">Fade & Taper</span>
-              <span className="text-void/40 text-4xl">✦</span>
-              <span className="font-display text-display text-void tracking-[-0.02em]">Beard Trim</span>
-              <span className="text-void/40 text-4xl">✦</span>
-              <span className="font-display text-display text-void tracking-[-0.02em]">Hot Towel Shave</span>
-              <span className="text-void/40 text-4xl">✦</span>
-              <span className="font-display text-display text-void tracking-[-0.02em]">Hair Design</span>
-              <span className="text-void/40 text-4xl">✦</span>
+              <span className="font-display text-[clamp(2rem,5vw,4.209rem)] text-void tracking-[-0.02em] whitespace-nowrap">Classic Cut</span>
+              <span className="text-void/40 text-[clamp(1.5rem,3vw,2.5rem)] whitespace-nowrap">✦</span>
+              <span className="font-display text-[clamp(2rem,5vw,4.209rem)] text-void tracking-[-0.02em] whitespace-nowrap">Fade & Taper</span>
+              <span className="text-void/40 text-[clamp(1.5rem,3vw,2.5rem)] whitespace-nowrap">✦</span>
+              <span className="font-display text-[clamp(2rem,5vw,4.209rem)] text-void tracking-[-0.02em] whitespace-nowrap">Beard Trim</span>
+              <span className="text-void/40 text-[clamp(1.5rem,3vw,2.5rem)] whitespace-nowrap">✦</span>
+              <span className="font-display text-[clamp(2rem,5vw,4.209rem)] text-void tracking-[-0.02em] whitespace-nowrap">Hot Towel Shave</span>
+              <span className="text-void/40 text-[clamp(1.5rem,3vw,2.5rem)] whitespace-nowrap">✦</span>
+              <span className="font-display text-[clamp(2rem,5vw,4.209rem)] text-void tracking-[-0.02em] whitespace-nowrap">Hair Design</span>
+              <span className="text-void/40 text-[clamp(1.5rem,3vw,2.5rem)] whitespace-nowrap">✦</span>
             </div>
           </div>
         </div>
@@ -282,28 +282,28 @@ export default function Home() {
         <div className="marquee-container">
           <div className="marquee-content" style={{ animationDirection: 'reverse' }}>
             <div className="flex items-center gap-12 px-6">
-              <span className="font-display text-display text-void tracking-[-0.02em]">Since 2009</span>
-              <span className="text-void/40 text-4xl">✦</span>
-              <span className="font-display text-display text-void tracking-[-0.02em]">Precision Craft</span>
-              <span className="text-void/40 text-4xl">✦</span>
-              <span className="font-display text-display text-void tracking-[-0.02em]">Walk-ins Welcome</span>
-              <span className="text-void/40 text-4xl">✦</span>
-              <span className="font-display text-display text-void tracking-[-0.02em]">No Shortcuts</span>
-              <span className="text-void/40 text-4xl">✦</span>
-              <span className="font-display text-display text-void tracking-[-0.02em]">Three Barbers</span>
-              <span className="text-void/40 text-4xl">✦</span>
+              <span className="font-display text-[clamp(2rem,5vw,4.209rem)] text-void tracking-[-0.02em] whitespace-nowrap">Since 2009</span>
+              <span className="text-void/40 text-[clamp(1.5rem,3vw,2.5rem)] whitespace-nowrap">✦</span>
+              <span className="font-display text-[clamp(2rem,5vw,4.209rem)] text-void tracking-[-0.02em] whitespace-nowrap">Precision Craft</span>
+              <span className="text-void/40 text-[clamp(1.5rem,3vw,2.5rem)] whitespace-nowrap">✦</span>
+              <span className="font-display text-[clamp(2rem,5vw,4.209rem)] text-void tracking-[-0.02em] whitespace-nowrap">Walk-ins Welcome</span>
+              <span className="text-void/40 text-[clamp(1.5rem,3vw,2.5rem)] whitespace-nowrap">✦</span>
+              <span className="font-display text-[clamp(2rem,5vw,4.209rem)] text-void tracking-[-0.02em] whitespace-nowrap">No Shortcuts</span>
+              <span className="text-void/40 text-[clamp(1.5rem,3vw,2.5rem)] whitespace-nowrap">✦</span>
+              <span className="font-display text-[clamp(2rem,5vw,4.209rem)] text-void tracking-[-0.02em] whitespace-nowrap">Three Barbers</span>
+              <span className="text-void/40 text-[clamp(1.5rem,3vw,2.5rem)] whitespace-nowrap">✦</span>
             </div>
             <div className="flex items-center gap-12 px-6">
-              <span className="font-display text-display text-void tracking-[-0.02em]">Since 2009</span>
-              <span className="text-void/40 text-4xl">✦</span>
-              <span className="font-display text-display text-void tracking-[-0.02em]">Precision Craft</span>
-              <span className="text-void/40 text-4xl">✦</span>
-              <span className="font-display text-display text-void tracking-[-0.02em]">Walk-ins Welcome</span>
-              <span className="text-void/40 text-4xl">✦</span>
-              <span className="font-display text-display text-void tracking-[-0.02em]">No Shortcuts</span>
-              <span className="text-void/40 text-4xl">✦</span>
-              <span className="font-display text-display text-void tracking-[-0.02em]">Three Barbers</span>
-              <span className="text-void/40 text-4xl">✦</span>
+              <span className="font-display text-[clamp(2rem,5vw,4.209rem)] text-void tracking-[-0.02em] whitespace-nowrap">Since 2009</span>
+              <span className="text-void/40 text-[clamp(1.5rem,3vw,2.5rem)] whitespace-nowrap">✦</span>
+              <span className="font-display text-[clamp(2rem,5vw,4.209rem)] text-void tracking-[-0.02em] whitespace-nowrap">Precision Craft</span>
+              <span className="text-void/40 text-[clamp(1.5rem,3vw,2.5rem)] whitespace-nowrap">✦</span>
+              <span className="font-display text-[clamp(2rem,5vw,4.209rem)] text-void tracking-[-0.02em] whitespace-nowrap">Walk-ins Welcome</span>
+              <span className="text-void/40 text-[clamp(1.5rem,3vw,2.5rem)] whitespace-nowrap">✦</span>
+              <span className="font-display text-[clamp(2rem,5vw,4.209rem)] text-void tracking-[-0.02em] whitespace-nowrap">No Shortcuts</span>
+              <span className="text-void/40 text-[clamp(1.5rem,3vw,2.5rem)] whitespace-nowrap">✦</span>
+              <span className="font-display text-[clamp(2rem,5vw,4.209rem)] text-void tracking-[-0.02em] whitespace-nowrap">Three Barbers</span>
+              <span className="text-void/40 text-[clamp(1.5rem,3vw,2.5rem)] whitespace-nowrap">✦</span>
             </div>
           </div>
         </div>
