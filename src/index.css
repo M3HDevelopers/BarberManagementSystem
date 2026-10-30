@@ -1,68 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  /* Primitive Tier — Warm barbershop palette */
-  --color-bone-50: #faf9f6;
-  --color-bone-100: #f3f1eb;
-  --color-bone-200: #e8e4d9;
-  --color-bone-300: #d4cfc0;
-  --color-bone-400: #b5ad99;
-
-  --color-ink-500: #6b6560;
-  --color-ink-600: #4a4541;
-  --color-ink-700: #332f2c;
-  --color-ink-800: #211e1c;
-  --color-ink-900: #141211;
-  --color-ink-950: #0a0908;
-
-  --color-oxblood-500: #8b2020;
-  --color-oxblood-600: #6e1818;
-  --color-oxblood-700: #551212;
-
-  --color-brass-400: #c9a96e;
-  --color-brass-500: #b8944d;
+  /* Dark-only palette */
+  --color-void: #0a0908;
+  --color-dark-100: #1a1816;
+  --color-dark-200: #2a2725;
+  --color-dark-300: #3a3633;
+  --color-dark-400: #4a4541;
+  
+  --color-cream: #f3f1eb;
+  --color-cream-muted: #b5ad99;
+  --color-cream-dim: #8a847d;
+  
+  --color-brass: #c9a96e;
+  --color-brass-light: #d4b87a;
+  --color-brass-dark: #b8944d;
 
   /* Typography */
-  --font-display: 'Instrument Serif', 'Playfair Display', Georgia, serif;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-
-  /* Radius — sharp for barbershop precision feel */
-  --radius-sm: 2px;
-  --radius-md: 4px;
-
-  /* Breakpoints */
-  --breakpoint-sm: 40rem;
-  --breakpoint-md: 48rem;
-  --breakpoint-lg: 64rem;
-  --breakpoint-xl: 80rem;
-}
-
-/* Semantic Tier */
-:root {
-  --bg-canvas: #faf9f6;
-  --bg-surface: #f3f1eb;
-  --bg-elevated: #ffffff;
-  --bg-ink: #141211;
-  --bg-ink-surface: #211e1c;
-  --bg-ink-elevated: #2a2725;
-
-  --text-primary: #141211;
-  --text-secondary: #4a4541;
-  --text-muted: #8a847d;
-  --text-on-ink: #f3f1eb;
-  --text-on-ink-muted: #b5ad99;
-
-  --border-subtle: #e8e4d9;
-  --border-strong: #d4cfc0;
-  --border-on-ink: rgba(243, 241, 235, 0.08);
-
-  --accent: #8b2020;
-  --accent-hover: #6e1818;
-  --accent-contrast: #faf9f6;
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 @layer base {
-  /* Sharp corners — barbershop precision */
   * {
     border-radius: 0 !important;
   }
@@ -73,21 +32,20 @@
   }
 
   body {
-    background-color: var(--bg-canvas);
-    color: var(--text-primary);
+    background-color: var(--color-void);
+    color: var(--color-cream);
     font-family: var(--font-sans);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   }
 
   ::selection {
-    background: var(--accent);
-    color: var(--accent-contrast);
+    background: var(--color-brass);
+    color: var(--color-void);
   }
 
-  /* iOS Safari zoom prevention — 16px mandatory */
+  /* iOS zoom prevention */
   input, select, textarea {
     font-size: 16px;
     line-height: 1.5;
@@ -99,17 +57,16 @@
     }
   }
 
-  /* Accessible focus rings — double ring */
+  /* Focus rings */
   :focus-visible {
-    outline: 2px solid var(--accent);
+    outline: 2px solid var(--color-brass);
     outline-offset: 2px;
   }
 
   /* Scrollbar */
-  ::-webkit-scrollbar { width: 6px; height: 6px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: var(--color-bone-300); }
-  ::-webkit-scrollbar-thumb:hover { background: var(--color-ink-500); }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--color-void); }
+  ::-webkit-scrollbar-thumb { background: var(--color-dark-300); }
 }
 
 @layer utilities {
@@ -125,42 +82,27 @@
     font-variant-numeric: tabular-nums;
   }
 
-  /* Tone-step separation — NOT borders */
-  .tone-canvas { background-color: var(--bg-canvas); }
-  .tone-surface { background-color: var(--bg-surface); }
-  .tone-elevated { background-color: var(--bg-elevated); }
-  .tone-ink { background-color: var(--bg-ink); }
-  .tone-ink-surface { background-color: var(--bg-ink-surface); }
-
-  /* Subtle separator — tone step, not border */
-  .separator {
-    border-color: var(--border-subtle);
-  }
-
-  .separator-on-ink {
-    border-color: var(--border-on-ink);
-  }
-
-  /* Fluid container */
   .container-fluid {
     width: 100%;
     max-width: 1400px;
     margin-inline: auto;
     padding-inline: clamp(1.25rem, 5vw, 3rem);
   }
+
+  .separator {
+    border-color: var(--color-dark-200);
+  }
 }
 
-/* Animations */
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fade-up {
-  animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* Reduced motion safety */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
