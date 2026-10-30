@@ -196,28 +196,66 @@ export default function Home() {
       </section>
 
       {/* Cream Section 1 - The Craft */}
-      <section className="py-32 bg-brass">
-        <div className="container-fluid">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            <div className="lg:col-span-6">
-              <p className="text-caption text-void/60 mb-4 tracking-[0.08em] uppercase">Our Philosophy</p>
-              <h2 className="font-display text-heading-xl leading-[1.1] tracking-[-0.02em] text-void mb-8 text-balance">
-                The craft of conversation.
-              </h2>
-              <p className="text-body text-void/80 leading-relaxed measure-prose mb-6 text-pretty">
-                A haircut is more than a service. It's a moment of connection between two people who understand that precision matters. We believe in taking the time to listen, to understand what you want, and to deliver something that feels right.
-              </p>
-              <p className="text-body text-void/80 leading-relaxed measure-prose text-pretty">
-                No rushing. No shortcuts. Just three barbers who care deeply about their craft and the people who sit in their chairs.
-              </p>
+      <section className="py-32 bg-brass relative overflow-hidden">
+        {/* Decorative background element */}
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-void/5 -skew-x-12 transform origin-top-right" />
+        
+        <div className="container-fluid relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Left Content */}
+            <div className="lg:col-span-6 space-y-8">
+              <div>
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="h-px w-12 bg-void/40" />
+                  <p className="text-caption text-void/70 tracking-[0.15em] uppercase font-medium">Our Philosophy</p>
+                </div>
+                <h2 className="font-display text-[clamp(2.5rem,5vw,4rem)] leading-[1.05] tracking-[-0.02em] text-void mb-6 text-balance">
+                  The craft of conversation.
+                </h2>
+              </div>
+              
+              <div className="space-y-6">
+                <p className="text-body-lg text-void/85 leading-relaxed measure-prose text-pretty">
+                  A haircut is more than a service. It's a moment of connection between two people who understand that precision matters.
+                </p>
+                <p className="text-body text-void/75 leading-relaxed measure-prose text-pretty">
+                  We believe in taking the time to listen, to understand what you want, and to deliver something that feels right. No rushing. No shortcuts. Just three barbers who care deeply about their craft and the people who sit in their chairs.
+                </p>
+              </div>
+
+              {/* Accent quote */}
+              <div className="border-l-2 border-void/30 pl-6 py-2">
+                <p className="font-display text-heading-md text-void/90 italic leading-snug">
+                  "Precision is not perfection—it's attention."
+                </p>
+              </div>
             </div>
+
+            {/* Right Image */}
             <div className="lg:col-span-5 lg:col-start-8">
-              <div className="aspect-[4/5] bg-void/10 overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800&q=80" 
-                  alt="Barber tools and craftsmanship"
-                  className="w-full h-full object-cover"
-                />
+              <div className="relative">
+                {/* Decorative frame */}
+                <div className="absolute -top-4 -left-4 w-full h-full border-2 border-void/20" />
+                
+                {/* Main image */}
+                <div className="relative aspect-[4/5] overflow-hidden group">
+                  <img 
+                    src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800&q=80" 
+                    alt="Barber tools and craftsmanship"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  {/* Overlay gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-void/40 via-transparent to-transparent" />
+                </div>
+
+                {/* Small accent image */}
+                <div className="absolute -bottom-8 -right-8 w-32 h-32 border-4 border-brass overflow-hidden hidden lg:block">
+                  <img 
+                    src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400&q=80" 
+                    alt="Detail shot"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
             </div>
           </div>
