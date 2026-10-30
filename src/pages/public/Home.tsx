@@ -73,13 +73,18 @@ export default function Home() {
     <div className="animate-fade-up">
       {/* Hero Section — Full Background with Centered Text */}
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
+        {/* Background Video */}
         <div className="absolute inset-0">
-          <img 
-            src="https://image.qwenlm.ai/generated-images/1ec30e24-1bab-4ee0-8160-355117266043/_result.png" 
-            alt="Dark moody barbershop interior"
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            poster="https://image.qwenlm.ai/generated-images/1ec30e24-1bab-4ee0-8160-355117266043/_result.png"
             className="w-full h-full object-cover"
-          />
+          >
+            <source src="https://cdn.coverr.co/videos/coverr-a-barber-cutting-hair-2583/1080p.mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-void/60" />
         </div>
         
