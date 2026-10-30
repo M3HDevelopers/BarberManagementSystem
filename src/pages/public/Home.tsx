@@ -1,5 +1,44 @@
 import React, { useState, useMemo } from 'react';
+import { motion } from 'framer-motion';
 import { ServiceService, BarberService, CustomerService, AppointmentService } from '../../services/db';
+
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 60 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }
+  }
+};
+
+const fadeIn = {
+  hidden: { opacity: 0 },
+  visible: { 
+    opacity: 1,
+    transition: { duration: 0.8 }
+  }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.2
+    }
+  }
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: { 
+    opacity: 1, 
+    scale: 1,
+    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }
+  }
+};
 
 export default function Home() {
   const services = ServiceService.getAll().slice(0, 6);
@@ -70,7 +109,12 @@ export default function Home() {
   };
 
   return (
-    <div className="animate-fade-up">
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="overflow-hidden"
+    >
       {/* Hero Section — Full Background with Centered Text */}
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image */}
@@ -86,13 +130,30 @@ export default function Home() {
         {/* Centered Content */}
         <div className="relative z-10 container-fluid text-center pt-48 md:pt-44 pb-32">
           <div className="max-w-5xl mx-auto">
-            <h1 className="font-display text-[clamp(3.8rem,14vw,8.5rem)] leading-[0.95] tracking-[-0.03em] text-cream mb-8 text-balance">
+            <motion.h1 
+              initial="hidden"
+              animate="visible"
+              variants={fadeInUp}
+              className="font-display text-[clamp(3.8rem,14vw,8.5rem)] leading-[0.95] tracking-[-0.03em] text-cream mb-8 text-balance"
+            >
               Where craft meets conversation.
-            </h1>
-            <p className="text-lead text-cream-muted leading-relaxed measure-prose mx-auto mb-12 text-pretty">
+            </motion.h1>
+            <motion.p 
+              initial="hidden"
+              animate="visible"
+              variants={fadeInUp}
+              transition={{ delay: 0.2 }}
+              className="text-lead text-cream-muted leading-relaxed measure-prose mx-auto mb-12 text-pretty"
+            >
               Since 2009, we've built a barbershop on the belief that a good haircut is not a transaction — it is a conversation between craft and client. Three barbers. One standard. No shortcuts, no rush, no compromise.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            </motion.p>
+            <motion.div 
+              initial="hidden"
+              animate="visible"
+              variants={fadeInUp}
+              transition={{ delay: 0.4 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+            >
               <a
                 href="#booking"
                 className="inline-block px-10 py-5 bg-brass text-void text-body font-semibold tracking-wide hover:bg-brass-light transition-colors"
@@ -105,7 +166,7 @@ export default function Home() {
               >
                 View Services
               </a>
-            </div>
+            </motion.div>
           </div>
         </div>
 
@@ -148,26 +209,40 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-32 bg-dark-100">
+      <motion.section 
+        id="services" 
+        className="py-32 bg-dark-100"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeInUp}
+      >
         <div className="container-fluid">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
-            <div className="lg:col-span-5">
+          <motion.div 
+            className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20"
+            variants={staggerContainer}
+          >
+            <motion.div className="lg:col-span-5" variants={fadeInUp}>
               <p className="text-caption text-brass mb-4 tracking-[0.08em] uppercase">Our Services</p>
               <h2 className="font-display text-heading-xl leading-[1.1] tracking-[-0.02em] text-cream text-balance">
                 Crafted with care.
               </h2>
-            </div>
-            <div className="lg:col-span-5 lg:col-start-8 flex items-end">
+            </motion.div>
+            <motion.div className="lg:col-span-5 lg:col-start-8 flex items-end" variants={fadeInUp}>
               <p className="text-body text-cream-muted leading-relaxed measure-prose text-pretty">
                 Every service includes a consultation, hot towel finish, and styling. Prices reflect the time and attention each cut requires.
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          <div className="border-t border-dark-200">
+          <motion.div 
+            className="border-t border-dark-200"
+            variants={staggerContainer}
+          >
             {services.map((service, i) => (
-              <div
+              <motion.div
                 key={service.id}
+                variants={fadeInUp}
                 className="grid grid-cols-12 gap-4 py-8 border-b border-dark-200 group hover:bg-dark-200/50 transition-colors px-4 -mx-4"
               >
                 <div className="col-span-1 text-body-sm text-cream-dim tabular-nums">
@@ -189,14 +264,20 @@ export default function Home() {
                     ${service.price}
                   </span>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Cream Section 1 - The Craft */}
-      <section className="py-32 bg-brass relative overflow-hidden">
+      <motion.section 
+        className="py-32 bg-brass relative overflow-hidden"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeInUp}
+      >
         {/* Decorative background element */}
         <div className="absolute top-0 right-0 w-1/3 h-full bg-void/5 -skew-x-12 transform origin-top-right" />
         
@@ -260,26 +341,39 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Barbers Section */}
-      <section id="barbers" className="py-32 bg-void">
+      <motion.section 
+        id="barbers" 
+        className="py-32 bg-void"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeInUp}
+      >
         <div className="container-fluid">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
-            <div className="lg:col-span-6">
+          <motion.div 
+            className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20"
+            variants={staggerContainer}
+          >
+            <motion.div className="lg:col-span-6" variants={fadeInUp}>
               <p className="text-caption text-brass mb-4 tracking-[0.08em] uppercase">The Team</p>
               <h2 className="font-display text-heading-xl leading-[1.1] tracking-[-0.02em] text-cream text-balance">
                 The barbers.
               </h2>
-            </div>
-            <div className="lg:col-span-4 lg:col-start-9 flex items-end">
+            </motion.div>
+            <motion.div className="lg:col-span-4 lg:col-start-9 flex items-end" variants={fadeInUp}>
               <p className="text-body text-cream-muted leading-relaxed measure-prose text-pretty">
                 Each barber has completed a minimum two-year apprenticeship. Specialties vary; standards do not.
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12"
+            variants={staggerContainer}
+          >
             {barbers.map((barber, index) => {
               const images = [
                 'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=800&q=80',
@@ -287,7 +381,7 @@ export default function Home() {
                 'https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=800&q=80'
               ];
               return (
-                <article key={barber.id} className="group">
+                <motion.article key={barber.id} className="group" variants={scaleIn}>
                   <div className="aspect-[4/5] bg-dark-100 mb-6 overflow-hidden relative">
                     <img 
                       src={images[index % images.length]} 
@@ -308,12 +402,12 @@ export default function Home() {
                   >
                     Book with {barber.name.split(' ')[0]}
                   </a>
-                </article>
+                </motion.article>
               );
             })}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Marquee 2 - Experience */}
       <section className="py-8 bg-brass">
@@ -348,17 +442,29 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-24 bg-void">
+      <motion.section 
+        className="py-24 bg-void"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeInUp}
+      >
         <div className="container-fluid">
           <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-16">
+            <motion.div 
+              className="text-center mb-16"
+              variants={fadeInUp}
+            >
               <p className="text-caption text-brass mb-4 tracking-[0.08em] uppercase">Why Choose Us</p>
               <h2 className="font-display text-heading-xl leading-[1.1] tracking-[-0.02em] text-cream text-balance">
                 More than just a haircut.
               </h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-              <div className="text-center">
+            </motion.div>
+            <motion.div 
+              className="grid grid-cols-1 md:grid-cols-3 gap-12"
+              variants={staggerContainer}
+            >
+              <motion.div className="text-center" variants={scaleIn}>
                 <div className="w-16 h-16 mx-auto mb-6 bg-brass/10 flex items-center justify-center">
                   <span className="font-display text-[32px] text-brass">01</span>
                 </div>
@@ -366,8 +472,8 @@ export default function Home() {
                 <p className="text-body-sm text-cream-muted leading-relaxed">
                   Every barber has years of experience and continuous training in the latest techniques.
                 </p>
-              </div>
-              <div className="text-center">
+              </motion.div>
+              <motion.div className="text-center" variants={scaleIn}>
                 <div className="w-16 h-16 mx-auto mb-6 bg-brass/10 flex items-center justify-center">
                   <span className="font-display text-[32px] text-brass">02</span>
                 </div>
@@ -375,8 +481,8 @@ export default function Home() {
                 <p className="text-body-sm text-cream-muted leading-relaxed">
                   We use only the finest professional-grade products for an exceptional grooming experience.
                 </p>
-              </div>
-              <div className="text-center">
+              </motion.div>
+              <motion.div className="text-center" variants={scaleIn}>
                 <div className="w-16 h-16 mx-auto mb-6 bg-brass/10 flex items-center justify-center">
                   <span className="font-display text-[32px] text-brass">03</span>
                 </div>
@@ -384,23 +490,35 @@ export default function Home() {
                 <p className="text-body-sm text-cream-muted leading-relaxed">
                   Enjoy a comfortable, welcoming environment where you can unwind and feel at ease.
                 </p>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Testimonials Section */}
-      <section className="py-32 bg-brass">
+      <motion.section 
+        className="py-32 bg-brass"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeInUp}
+      >
         <div className="container-fluid">
-          <div className="text-center mb-16">
+          <motion.div 
+            className="text-center mb-16"
+            variants={fadeInUp}
+          >
             <p className="text-caption text-void/60 mb-4 tracking-[0.08em] uppercase">What They Say</p>
             <h2 className="font-display text-heading-xl leading-[1.1] tracking-[-0.02em] text-void text-balance">
               Trusted by our clients.
             </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <div className="bg-void/5 p-8">
+          </motion.div>
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto"
+            variants={staggerContainer}
+          >
+            <motion.div className="bg-void/5 p-8" variants={scaleIn}>
               <blockquote className="font-display text-heading-md leading-[1.3] tracking-[-0.01em] text-void mb-6">
                 "I've been coming here for five years. It's not just a haircut — it's the conversation, the attention to detail."
               </blockquote>
@@ -413,8 +531,8 @@ export default function Home() {
                   <p className="text-caption text-void/60">Client since 2019</p>
                 </div>
               </div>
-            </div>
-            <div className="bg-void/5 p-8">
+            </motion.div>
+            <motion.div className="bg-void/5 p-8" variants={scaleIn}>
               <blockquote className="font-display text-heading-md leading-[1.3] tracking-[-0.01em] text-void mb-6">
                 "The best barbershop in town. Tony always knows exactly what I want. Professional, friendly, and consistent."
               </blockquote>
@@ -427,8 +545,8 @@ export default function Home() {
                   <p className="text-caption text-void/60">Client since 2020</p>
                 </div>
               </div>
-            </div>
-            <div className="bg-void/5 p-8">
+            </motion.div>
+            <motion.div className="bg-void/5 p-8" variants={scaleIn}>
               <blockquote className="font-display text-heading-md leading-[1.3] tracking-[-0.01em] text-void mb-6">
                 "Finally found a place where I feel comfortable. The atmosphere is great and the cuts are always on point."
               </blockquote>
@@ -441,22 +559,34 @@ export default function Home() {
                   <p className="text-caption text-void/60">Client since 2021</p>
                 </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Gallery Section */}
-      <section className="py-32 bg-void">
+      <motion.section 
+        className="py-32 bg-void"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeInUp}
+      >
         <div className="container-fluid">
-          <div className="text-center mb-16">
+          <motion.div 
+            className="text-center mb-16"
+            variants={fadeInUp}
+          >
             <p className="text-caption text-brass mb-4 tracking-[0.08em] uppercase">Our Work</p>
             <h2 className="font-display text-heading-xl leading-[1.1] tracking-[-0.02em] text-cream text-balance">
               The gallery.
             </h2>
-          </div>
+          </motion.div>
           {/* Modern Asymmetric Gallery Layout */}
-          <div className="space-y-4">
+          <motion.div 
+            className="space-y-4"
+            variants={staggerContainer}
+          >
             {/* Row 1: Full-width cinematic */}
             <div className="w-full h-[400px] md:h-[500px] overflow-hidden group cursor-pointer relative">
               <img 
@@ -556,28 +686,41 @@ export default function Home() {
             </div>
 
             {/* Row 6: Final cinematic wide */}
-            <div className="w-full h-[350px] md:h-[450px] overflow-hidden group cursor-pointer relative">
+            <motion.div 
+              className="w-full h-[350px] md:h-[450px] overflow-hidden group cursor-pointer relative"
+              variants={fadeIn}
+            >
               <img 
                 src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=1200&q=80" 
                 alt="Classic barbershop atmosphere"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-void/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Booking Section */}
-      <section id="booking" className="py-32 bg-dark-100">
+      <motion.section 
+        id="booking" 
+        className="py-32 bg-dark-100"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeInUp}
+      >
         <div className="container-fluid max-w-3xl">
-          <div className="text-center mb-16">
+          <motion.div 
+            className="text-center mb-16"
+            variants={fadeInUp}
+          >
             <p className="text-caption text-brass mb-4 tracking-[0.08em] uppercase">Book Now</p>
             <h2 className="font-display text-heading-xl leading-[1.1] tracking-[-0.02em] text-cream mb-6 text-balance">
               Book an appointment.
             </h2>
             <p className="text-body text-cream-muted">Step {bookingStep} of 4</p>
-          </div>
+          </motion.div>
 
           {error && (
             <div className="p-4 bg-red-900/20 border border-red-500/30 mb-8">
@@ -804,13 +947,23 @@ export default function Home() {
             </>
           )}
         </div>
-      </section>
+      </motion.section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-32 bg-void">
+      <motion.section 
+        id="contact" 
+        className="py-32 bg-void"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeInUp}
+      >
         <div className="container-fluid">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <div>
+          <motion.div 
+            className="grid grid-cols-1 lg:grid-cols-2 gap-16"
+            variants={staggerContainer}
+          >
+            <motion.div variants={fadeInUp}>
               <p className="text-caption text-brass mb-4 tracking-[0.08em] uppercase">Visit Us</p>
               <h2 className="font-display text-heading-xl leading-[1.1] tracking-[-0.02em] text-cream mb-12 text-balance">
                 Come see us.
@@ -829,9 +982,9 @@ export default function Home() {
                   <p className="text-lead text-cream">info@barberpro.com</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            <div>
+            <motion.div variants={fadeInUp}>
               <p className="text-caption text-brass mb-4 tracking-[0.08em] uppercase">Hours</p>
               <div className="space-y-0 mt-12">
                 {[
@@ -854,10 +1007,10 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
-      </section>
-    </div>
+      </motion.section>
+    </motion.div>
   );
 }
