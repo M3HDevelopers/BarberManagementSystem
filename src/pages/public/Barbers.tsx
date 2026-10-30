@@ -6,22 +6,66 @@ export default function Barbers() {
   const barbers = BarberService.getAll();
 
   return (
-    <div className="py-24 md:py-32 animate-fade">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
-        <div className="max-w-xl mb-16">
-          <h1 className="text-[36px] md:text-[44px] font-normal tracking-[-0.02em] leading-[1.05] text-stone-900">The barbers.</h1>
-          <p className="text-[15px] text-stone-600 mt-4 leading-relaxed">Each barber on our floor has completed a minimum two-year apprenticeship. Specialties vary; standards do not.</p>
+    <div className="py-24 md:py-36 animate-fade-up">
+      <div className="container-fluid">
+        {/* Header */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
+          <div className="lg:col-span-6">
+            <h1 className="font-display text-[44px] md:text-[60px] leading-[1.02] tracking-[-0.02em] text-[var(--text-primary)]">
+              The barbers.
+            </h1>
+          </div>
+          <div className="lg:col-span-4 lg:col-start-8 flex items-end">
+            <p className="text-[15px] text-[var(--text-secondary)] leading-relaxed measure-prose">
+              Each barber on our floor has completed a minimum two-year apprenticeship before taking a chair. Specialties vary; standards do not.
+            </p>
+          </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
+
+        {/* Barber grid — editorial portrait layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-20">
           {barbers.map(b => (
             <article key={b.id}>
-              <div className="aspect-[4/5] bg-stone-800 mb-5 flex items-center justify-center">
-                <span className="text-[80px] font-normal text-cream-50/15 tracking-[-0.04em]">{b.name.split(' ').map(n => n[0]).join('')}</span>
+              {/* Portrait */}
+              <div className="aspect-[4/5] bg-[var(--bg-ink)] mb-6 flex items-center justify-center overflow-hidden">
+                <span className="font-display text-[104px] text-[var(--text-on-ink)]/10 tracking-[-0.04em] select-none">
+                  {b.name.split(' ').map(n => n[0]).join('')}
+                </span>
               </div>
-              <h3 className="text-[20px] font-medium text-stone-900 tracking-[-0.01em]">{b.name}</h3>
-              <p className="text-[13px] text-stone-500 mt-1.5">{b.skills.join(' · ')}</p>
-              <div className="mt-4 pt-4 border-t hairline">
-                <Link to="/booking" className="text-[13px] text-stone-900 font-medium border-b border-stone-900/30 hover:border-stone-900 pb-0.5 transition-colors">Book with {b.name.split(' ')[0]}</Link>
+
+              {/* Name */}
+              <h2 className="text-[24px] font-medium text-[var(--text-primary)] tracking-[-0.01em]">
+                {b.name}
+              </h2>
+
+              {/* Specialties */}
+              <p className="text-[13px] text-[var(--text-muted)] mt-2 leading-relaxed">
+                {b.skills.join(' · ')}
+              </p>
+
+              {/* Schedule */}
+              <div className="mt-6 pt-6 border-t separator">
+                <p className="text-[12px] text-[var(--text-muted)] mb-3">Schedule</p>
+                <div className="space-y-1">
+                  {b.workingHours.map(wh => (
+                    <div key={wh.day} className="flex justify-between text-[13px]">
+                      <span className="text-[var(--text-muted)] w-10">{wh.day}</span>
+                      <span className="text-[var(--text-secondary)] tabular-nums">
+                        {wh.start} — {wh.end}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Book link */}
+              <div className="mt-6">
+                <Link
+                  to="/booking"
+                  className="text-[13px] text-[var(--text-primary)] font-medium border-b border-[var(--border-strong)] hover:border-[var(--text-primary)] pb-0.5 transition-colors"
+                >
+                  Book with {b.name.split(' ')[0]}
+                </Link>
               </div>
             </article>
           ))}

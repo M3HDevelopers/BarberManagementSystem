@@ -24,7 +24,7 @@ export default function Booking() {
     const service = services.find(s => s.id === selectedService);
     if (!service) return [];
     return BarberService.getAvailableSlots(selectedBarber, selectedDate, service.duration);
-  }, [selectedBarber, selectedDate, selectedService]);
+  }, [selectedBarber, selectedDate, selectedService, services]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -57,48 +57,78 @@ export default function Booking() {
 
   if (booked) {
     return (
-      <div className="py-24 md:py-32">
-        <div className="max-w-md mx-auto px-6 text-center animate-fade">
-          <p className="text-[13px] text-stone-500 mb-2">Appointment confirmed</p>
-          <h1 className="text-[28px] font-normal tracking-[-0.02em] text-stone-900 mb-6">We'll see you soon.</h1>
-          <div className="text-left p-5 bg-cream-100 text-[13px] space-y-1.5 mb-8">
-            <p>{services.find(s => s.id === selectedService)?.name} — ${services.find(s => s.id === selectedService)?.price}</p>
-            <p>{barbers.find(b => b.id === selectedBarber)?.name}</p>
-            <p>{selectedDate} at {selectedTime}</p>
+      <div className="py-24 md:py-36">
+        <div className="container-fluid max-w-xl">
+          <div className="text-center animate-fade-up">
+            <p className="text-[13px] text-[var(--text-muted)] mb-3">Appointment confirmed</p>
+            <h1 className="font-display text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] text-[var(--text-primary)] mb-8">
+              We'll see you soon.
+            </h1>
+            <div className="text-left p-6 bg-[var(--bg-surface)] text-[14px] space-y-2 mb-10">
+              <p>
+                <span className="text-[var(--text-muted)]">Service:</span>{' '}
+                <span className="font-medium text-[var(--text-primary)]">
+                  {services.find(s => s.id === selectedService)?.name} — $
+                  {services.find(s => s.id === selectedService)?.price}
+                </span>
+              </p>
+              <p>
+                <span className="text-[var(--text-muted)]">Barber:</span>{' '}
+                <span className="font-medium text-[var(--text-primary)]">
+                  {barbers.find(b => b.id === selectedBarber)?.name}
+                </span>
+              </p>
+              <p>
+                <span className="text-[var(--text-muted)]">Date:</span>{' '}
+                <span className="font-medium text-[var(--text-primary)]">
+                  {selectedDate} at {selectedTime}
+                </span>
+              </p>
+            </div>
+            <button
+              onClick={() => {
+                setBooked(false);
+                setStep(1);
+                setSelectedService('');
+                setSelectedBarber('');
+                setSelectedDate('');
+                setSelectedTime('');
+                setName('');
+                setPhone('');
+                setEmail('');
+              }}
+              className="px-8 py-4 bg-[var(--bg-ink)] text-[var(--text-on-ink)] text-[14px] font-medium hover:bg-[var(--bg-ink-surface)] transition-colors"
+            >
+              Book another appointment
+            </button>
           </div>
-          <button
-            onClick={() => {
-              setBooked(false);
-              setStep(1);
-              setSelectedService('');
-              setSelectedBarber('');
-              setSelectedDate('');
-              setSelectedTime('');
-              setName('');
-              setPhone('');
-              setEmail('');
-            }}
-            className="px-8 py-3 bg-stone-900 text-cream-50 text-[13px] font-medium hover:bg-stone-800 transition-colors"
-          >
-            Book another
-          </button>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="py-24 md:py-32 animate-fade">
-      <div className="max-w-xl mx-auto px-6">
-        <h1 className="text-[32px] md:text-[40px] font-normal tracking-[-0.02em] text-stone-900 mb-3">Book an appointment.</h1>
-        <p className="text-[14px] text-stone-500 mb-10">Step {step} of 4</p>
+    <div className="py-24 md:py-36 animate-fade-up">
+      <div className="container-fluid max-w-2xl">
+        {/* Header */}
+        <div className="mb-12">
+          <h1 className="font-display text-[40px] md:text-[52px] leading-[1.02] tracking-[-0.02em] text-[var(--text-primary)] mb-3">
+            Book an appointment.
+          </h1>
+          <p className="text-[14px] text-[var(--text-muted)]">Step {step} of 4</p>
+        </div>
 
-        {error && <p className="text-[13px] text-oxblood-600 mb-4">{error}</p>}
+        {error && (
+          <div className="p-4 bg-red-50 border border-red-200 mb-6">
+            <p className="text-[13px] text-red-700">{error}</p>
+          </div>
+        )}
 
+        {/* Step 1: Service */}
         {step === 1 && (
           <div>
-            <p className="text-[13px] text-stone-600 mb-4">Choose a service</p>
-            <div className="space-y-0 border-t hairline">
+            <p className="text-[14px] text-[var(--text-secondary)] mb-6">Choose a service</p>
+            <div className="border-t separator">
               {services.map(s => (
                 <button
                   key={s.id}
@@ -106,23 +136,30 @@ export default function Booking() {
                     setSelectedService(s.id);
                     setStep(2);
                   }}
-                  className="w-full flex items-baseline justify-between py-4 border-b hairline text-left hover:bg-cream-100 transition-colors px-1 -mx-1"
+                  className="w-full flex items-baseline justify-between py-5 border-b separator text-left hover:bg-[var(--bg-surface)] transition-colors px-3 -mx-3"
                 >
                   <div>
-                    <p className="text-[15px] font-medium text-stone-900">{s.name}</p>
-                    <p className="text-[12px] text-stone-500 mt-0.5">{s.duration} min</p>
+                    <p className="text-[16px] font-medium text-[var(--text-primary)]">
+                      {s.name}
+                    </p>
+                    <p className="text-[13px] text-[var(--text-muted)] mt-0.5">
+                      {s.duration} min
+                    </p>
                   </div>
-                  <span className="text-[15px] font-medium text-stone-900 tabular-nums">${s.price}</span>
+                  <span className="text-[16px] font-medium text-[var(--text-primary)] tabular-nums">
+                    ${s.price}
+                  </span>
                 </button>
               ))}
             </div>
           </div>
         )}
 
+        {/* Step 2: Barber */}
         {step === 2 && (
           <div>
-            <p className="text-[13px] text-stone-600 mb-4">Choose a barber</p>
-            <div className="space-y-0 border-t hairline">
+            <p className="text-[14px] text-[var(--text-secondary)] mb-6">Choose a barber</p>
+            <div className="border-t separator">
               {barbers.map(b => (
                 <button
                   key={b.id}
@@ -130,99 +167,154 @@ export default function Booking() {
                     setSelectedBarber(b.id);
                     setStep(3);
                   }}
-                  className="w-full flex items-center justify-between py-4 border-b hairline text-left hover:bg-cream-100 transition-colors px-1 -mx-1"
+                  className="w-full flex items-center justify-between py-5 border-b separator text-left hover:bg-[var(--bg-surface)] transition-colors px-3 -mx-3"
                 >
-                  <p className="text-[15px] font-medium text-stone-900">{b.name}</p>
-                  <p className="text-[12px] text-stone-500">{b.skills.slice(0, 2).join(', ')}</p>
+                  <p className="text-[16px] font-medium text-[var(--text-primary)]">
+                    {b.name}
+                  </p>
+                  <p className="text-[13px] text-[var(--text-muted)]">
+                    {b.skills.slice(0, 2).join(', ')}
+                  </p>
                 </button>
               ))}
             </div>
-            <button onClick={() => setStep(1)} className="mt-6 text-[13px] text-stone-500 hover:text-stone-900 transition-colors">
-              Back
+            <button
+              onClick={() => setStep(1)}
+              className="mt-8 text-[13px] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
+            >
+              ← Back to services
             </button>
           </div>
         )}
 
+        {/* Step 3: Date & Time */}
         {step === 3 && (
           <div>
-            <p className="text-[13px] text-stone-600 mb-4">Select date and time</p>
-            <input
-              type="date"
-              min={today}
-              max={maxDate}
-              value={selectedDate}
-              onChange={e => {
-                setSelectedDate(e.target.value);
-                setSelectedTime('');
-              }}
-              className="w-full px-4 py-3 border hairline text-[14px] mb-4 focus:outline-none focus:border-stone-400"
-            />
+            <p className="text-[14px] text-[var(--text-secondary)] mb-6">
+              Select date and time
+            </p>
+            <div className="mb-8">
+              <label htmlFor="booking-date" className="block text-[13px] text-[var(--text-muted)] mb-2">
+                Date
+              </label>
+              <input
+                id="booking-date"
+                type="date"
+                min={today}
+                max={maxDate}
+                value={selectedDate}
+                onChange={e => {
+                  setSelectedDate(e.target.value);
+                  setSelectedTime('');
+                }}
+                className="w-full max-w-xs px-4 py-3 border separator text-[14px] bg-[var(--bg-elevated)] focus:outline-none focus:border-[var(--text-primary)] transition-colors"
+              />
+            </div>
             {selectedDate && availableSlots.length > 0 && (
-              <div className="grid grid-cols-4 gap-2">
-                {availableSlots.map(slot => (
-                  <button
-                    key={slot}
-                    onClick={() => {
-                      setSelectedTime(slot);
-                      setStep(4);
-                    }}
-                    className={`py-2.5 text-[13px] font-medium border transition-colors ${
-                      selectedTime === slot ? 'border-stone-900 bg-stone-900 text-cream-50' : 'hairline hover:border-stone-400 text-stone-700'
-                    }`}
-                  >
-                    {slot}
-                  </button>
-                ))}
+              <div>
+                <label className="block text-[13px] text-[var(--text-muted)] mb-3">
+                  Available times
+                </label>
+                <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
+                  {availableSlots.map(slot => (
+                    <button
+                      key={slot}
+                      onClick={() => {
+                        setSelectedTime(slot);
+                        setStep(4);
+                      }}
+                      className={`py-3 text-[13px] font-medium border transition-colors ${
+                        selectedTime === slot
+                          ? 'border-[var(--bg-ink)] bg-[var(--bg-ink)] text-[var(--text-on-ink)]'
+                          : 'border-[var(--border-subtle)] hover:border-[var(--text-primary)] text-[var(--text-secondary)]'
+                      }`}
+                    >
+                      {slot}
+                    </button>
+                  ))}
+                </div>
               </div>
             )}
-            {selectedDate && availableSlots.length === 0 && <p className="text-[13px] text-stone-500">No available slots for this date.</p>}
-            <button onClick={() => setStep(2)} className="mt-6 text-[13px] text-stone-500 hover:text-stone-900 transition-colors">
-              Back
+            {selectedDate && availableSlots.length === 0 && (
+              <p className="text-[14px] text-[var(--text-muted)]">
+                No available slots for this date. Please try another date.
+              </p>
+            )}
+            <button
+              onClick={() => setStep(2)}
+              className="mt-8 text-[13px] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
+            >
+              ← Back to barber
             </button>
           </div>
         )}
 
+        {/* Step 4: Details */}
         {step === 4 && (
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <p className="text-[13px] text-stone-600 mb-2">Your details</p>
-            <div className="p-4 bg-cream-100 text-[13px] space-y-1 mb-4">
-              <p>{services.find(s => s.id === selectedService)?.name} — ${services.find(s => s.id === selectedService)?.price}</p>
-              <p>{barbers.find(b => b.id === selectedBarber)?.name} · {selectedDate} at {selectedTime}</p>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <p className="text-[14px] text-[var(--text-secondary)] mb-2">Your details</p>
+            <div className="p-5 bg-[var(--bg-surface)] text-[14px] space-y-1.5">
+              <p>
+                <span className="text-[var(--text-muted)]">Service:</span>{' '}
+                {services.find(s => s.id === selectedService)?.name} — $
+                {services.find(s => s.id === selectedService)?.price}
+              </p>
+              <p>
+                <span className="text-[var(--text-muted)]">Barber:</span>{' '}
+                {barbers.find(b => b.id === selectedBarber)?.name} · {selectedDate} at{' '}
+                {selectedTime}
+              </p>
             </div>
             <div>
-              <label className="block text-[12px] text-stone-500 mb-1.5">Name</label>
+              <label htmlFor="booking-name" className="block text-[13px] text-[var(--text-muted)] mb-2">
+                Name
+              </label>
               <input
+                id="booking-name"
                 type="text"
                 value={name}
                 onChange={e => setName(e.target.value)}
-                className="w-full px-4 py-3 border hairline text-[14px] focus:outline-none focus:border-stone-400"
+                className="w-full px-4 py-3 border separator text-[14px] bg-[var(--bg-elevated)] focus:outline-none focus:border-[var(--text-primary)] transition-colors"
                 required
               />
             </div>
             <div>
-              <label className="block text-[12px] text-stone-500 mb-1.5">Phone</label>
+              <label htmlFor="booking-phone" className="block text-[13px] text-[var(--text-muted)] mb-2">
+                Phone
+              </label>
               <input
+                id="booking-phone"
                 type="tel"
                 value={phone}
                 onChange={e => setPhone(e.target.value)}
-                className="w-full px-4 py-3 border hairline text-[14px] focus:outline-none focus:border-stone-400"
+                className="w-full px-4 py-3 border separator text-[14px] bg-[var(--bg-elevated)] focus:outline-none focus:border-[var(--text-primary)] transition-colors"
                 required
               />
             </div>
             <div>
-              <label className="block text-[12px] text-stone-500 mb-1.5">Email</label>
+              <label htmlFor="booking-email" className="block text-[13px] text-[var(--text-muted)] mb-2">
+                Email
+              </label>
               <input
+                id="booking-email"
                 type="email"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
-                className="w-full px-4 py-3 border hairline text-[14px] focus:outline-none focus:border-stone-400"
+                className="w-full px-4 py-3 border separator text-[14px] bg-[var(--bg-elevated)] focus:outline-none focus:border-[var(--text-primary)] transition-colors"
               />
             </div>
-            <button type="submit" className="w-full py-3.5 bg-stone-900 text-cream-50 text-[14px] font-medium hover:bg-stone-800 transition-colors">
+            <button
+              type="submit"
+              className="w-full py-4 bg-[var(--bg-ink)] text-[var(--text-on-ink)] text-[14px] font-medium hover:bg-[var(--bg-ink-surface)] transition-colors"
+            >
               Confirm booking
             </button>
-            <button type="button" onClick={() => setStep(3)} className="text-[13px] text-stone-500 hover:text-stone-900 transition-colors">
-              Back
+            <button
+              type="button"
+              onClick={() => setStep(3)}
+              className="text-[13px] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
+            >
+              ← Back to date and time
             </button>
           </form>
         )}
