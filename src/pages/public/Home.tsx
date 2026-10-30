@@ -80,10 +80,11 @@ export default function Home() {
             loop 
             muted 
             playsInline
-            poster="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1920&q=80"
+            poster="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=1920&q=80"
             className="w-full h-full object-cover"
           >
-            <source src="https://assets.mixkit.co/videos/1171/1171-720.mp4" type="video/mp4" />
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-barber-trimming-a-mans-beard-2717-large.mp4" type="video/mp4" />
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-man-getting-a-haircut-at-a-barbershop-2715-large.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-void/60" />
         </div>
