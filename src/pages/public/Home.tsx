@@ -479,7 +479,7 @@ export default function Home() {
             {/* More haircut images */}
             <div className="col-span-2 row-span-1 bg-dark-100 overflow-hidden group cursor-pointer relative">
               <img 
-                src="https://images.unsplash.com/photo-1634302086738-b6b4bd5f1f5f?w=600&q=80" 
+                src="https://image.qwenlm.ai/generated-images/7a08f501-4ee0-47d3-b8b3-4212be0480ea/_result.png" 
                 alt="Beard trimming"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
@@ -497,7 +497,7 @@ export default function Home() {
             
             <div className="col-span-2 row-span-1 bg-dark-100 overflow-hidden group cursor-pointer relative">
               <img 
-                src="https://images.unsplash.com/photo-1621605815971-fbc9886b1fa7?w=600&q=80" 
+                src="https://image.qwenlm.ai/generated-images/cf448370-8424-4b81-a616-5c93592171c9/_result.png" 
                 alt="Hair styling finish"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
@@ -552,7 +552,7 @@ export default function Home() {
             
             <div className="col-span-3 row-span-1 bg-dark-100 overflow-hidden group cursor-pointer relative">
               <img 
-                src="https://images.unsplash.com/photo-1634302086738-b6b4bd5f1f5f?w=600&q=80" 
+                src="https://image.qwenlm.ai/generated-images/08e45790-b694-47ee-be92-f75453b8e049/_result.png" 
                 alt="Precision beard work"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
