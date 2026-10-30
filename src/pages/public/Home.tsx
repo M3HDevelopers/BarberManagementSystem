@@ -1,16 +1,78 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { ServiceService, BarberService } from '../../services/db';
+import React, { useState, useMemo } from 'react';
+import { ServiceService, BarberService, CustomerService, AppointmentService } from '../../services/db';
 
 export default function Home() {
   const services = ServiceService.getAll().slice(0, 6);
   const barbers = BarberService.getAll();
 
+  // Booking state
+  const [bookingStep, setBookingStep] = useState(1);
+  const [selectedService, setSelectedService] = useState('');
+  const [selectedBarber, setSelectedBarber] = useState('');
+  const [selectedDate, setSelectedDate] = useState('');
+  const [selectedTime, setSelectedTime] = useState('');
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [booked, setBooked] = useState(false);
+  const [error, setError] = useState('');
+
+  const today = new Date().toISOString().split('T')[0];
+  const maxDate = new Date(Date.now() + 30 * 86400000).toISOString().split('T')[0];
+
+  const availableSlots = useMemo(() => {
+    if (!selectedBarber || !selectedDate || !selectedService) return [];
+    const service = services.find(s => s.id === selectedService);
+    if (!service) return [];
+    return BarberService.getAvailableSlots(selectedBarber, selectedDate, service.duration);
+  }, [selectedBarber, selectedDate, selectedService, services]);
+
+  const handleBookingSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    if (!name || !phone) {
+      setError('Name and phone are required');
+      return;
+    }
+
+    let customer = CustomerService.getAll(1, 1000, phone).data.find(c => c.phone === phone);
+    if (!customer) {
+      customer = CustomerService.create({ name, phone, email: email || undefined });
+    }
+
+    const appointment = AppointmentService.create({
+      customerId: customer.id,
+      barberId: selectedBarber,
+      serviceIds: [selectedService],
+      date: selectedDate,
+      startTime: selectedTime,
+      type: 'online',
+    });
+
+    if (appointment) {
+      setBooked(true);
+    } else {
+      setError('This time slot is no longer available. Please choose another.');
+    }
+  };
+
+  const resetBooking = () => {
+    setBooked(false);
+    setBookingStep(1);
+    setSelectedService('');
+    setSelectedBarber('');
+    setSelectedDate('');
+    setSelectedTime('');
+    setName('');
+    setPhone('');
+    setEmail('');
+    setError('');
+  };
+
   return (
     <div className="animate-fade-up">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Background Image */}
+      <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img 
             src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1920&q=80" 
@@ -34,30 +96,29 @@ export default function Home() {
               A barbershop built on the belief that a good haircut is not a transaction — it is a conversation between craft and client. Three barbers. One standard. No shortcuts.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                to="/booking"
-                className="inline-block px-10 py-5 bg-brass text-void text-[15px] font-semibold tracking-wide hover:bg-brass-light transition-colors"
+              <a
+                href="#booking"
+                className="inline-block px-10 py-5 bg-brass text-void text-[15px] font-semibold tracking-wide hover:bg-brass-light transition-colors text-center"
               >
                 Book Appointment
-              </Link>
-              <Link
-                to="/services"
-                className="inline-block px-10 py-5 border-2 border-cream/30 text-cream text-[15px] font-semibold tracking-wide hover:border-brass hover:text-brass transition-colors"
+              </a>
+              <a
+                href="#services"
+                className="inline-block px-10 py-5 border-2 border-cream/30 text-cream text-[15px] font-semibold tracking-wide hover:border-brass hover:text-brass transition-colors text-center"
               >
                 View Services
-              </Link>
+              </a>
             </div>
           </div>
         </div>
 
-        {/* Scroll indicator */}
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10">
           <div className="w-px h-16 bg-gradient-to-b from-transparent via-cream-muted to-transparent" />
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="py-32 bg-dark-100">
+      <section id="services" className="py-32 bg-dark-100">
         <div className="container-fluid">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
             <div className="lg:col-span-5">
@@ -101,21 +162,11 @@ export default function Home() {
               </div>
             ))}
           </div>
-
-          <div className="mt-12">
-            <Link
-              to="/services"
-              className="inline-flex items-center gap-4 text-[15px] text-cream font-semibold border-b-2 border-brass hover:text-brass transition-colors pb-1"
-            >
-              View All Services
-              <span className="text-[20px]">→</span>
-            </Link>
-          </div>
         </div>
       </section>
 
       {/* Barbers Section */}
-      <section className="py-32 bg-void">
+      <section id="barbers" className="py-32 bg-void">
         <div className="container-fluid">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
             <div className="lg:col-span-6">
@@ -154,12 +205,12 @@ export default function Home() {
                   <p className="text-[14px] text-cream-dim leading-relaxed mb-6">
                     {barber.skills.join(' · ')}
                   </p>
-                  <Link
-                    to="/booking"
+                  <a
+                    href="#booking"
                     className="inline-block text-[14px] text-brass font-semibold border-b-2 border-brass/50 hover:border-brass transition-colors pb-0.5"
                   >
                     Book with {barber.name.split(' ')[0]}
-                  </Link>
+                  </a>
                 </article>
               );
             })}
@@ -167,34 +218,246 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-32 bg-dark-100 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <img 
-            src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1600&q=80" 
-            alt=""
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="container-fluid relative z-10 text-center">
-          <p className="text-[13px] text-brass mb-6 tracking-wide">READY?</p>
-          <h2 className="font-display text-[48px] lg:text-[72px] leading-[1.05] tracking-[-0.02em] text-cream mb-8">
-            Experience the difference.
-          </h2>
-          <p className="text-[18px] text-cream-muted leading-relaxed measure-prose mx-auto mb-12 max-w-2xl">
-            Book your appointment today and discover what true craftsmanship feels like.
-          </p>
-          <Link
-            to="/booking"
-            className="inline-block px-12 py-6 bg-brass text-void text-[16px] font-bold tracking-wide hover:bg-brass-light transition-colors"
-          >
-            Book Your Appointment
-          </Link>
+      {/* Booking Section */}
+      <section id="booking" className="py-32 bg-dark-100">
+        <div className="container-fluid max-w-3xl">
+          <div className="text-center mb-16">
+            <p className="text-[13px] text-brass mb-4 tracking-wide">BOOK NOW</p>
+            <h2 className="font-display text-[48px] lg:text-[64px] leading-[1.05] tracking-[-0.02em] text-cream mb-6">
+              Book an appointment.
+            </h2>
+            <p className="text-[16px] text-cream-muted">Step {bookingStep} of 4</p>
+          </div>
+
+          {error && (
+            <div className="p-4 bg-red-900/20 border border-red-500/30 mb-8">
+              <p className="text-[14px] text-red-300">{error}</p>
+            </div>
+          )}
+
+          {booked ? (
+            <div className="text-center">
+              <div className="w-20 h-20 mx-auto mb-8 bg-brass/20 flex items-center justify-center">
+                <span className="text-brass text-[48px]">✓</span>
+              </div>
+              <h3 className="font-display text-[36px] text-cream mb-6">We'll see you soon.</h3>
+              <div className="text-left p-6 bg-dark-200 text-[15px] space-y-2 mb-10">
+                <p>
+                  <span className="text-cream-dim">Service:</span>{' '}
+                  <span className="font-medium text-cream">
+                    {services.find(s => s.id === selectedService)?.name} — $
+                    {services.find(s => s.id === selectedService)?.price}
+                  </span>
+                </p>
+                <p>
+                  <span className="text-cream-dim">Barber:</span>{' '}
+                  <span className="font-medium text-cream">
+                    {barbers.find(b => b.id === selectedBarber)?.name}
+                  </span>
+                </p>
+                <p>
+                  <span className="text-cream-dim">Date:</span>{' '}
+                  <span className="font-medium text-cream">
+                    {selectedDate} at {selectedTime}
+                  </span>
+                </p>
+              </div>
+              <button
+                onClick={resetBooking}
+                className="px-10 py-5 bg-brass text-void text-[15px] font-semibold hover:bg-brass-light transition-colors"
+              >
+                Book Another Appointment
+              </button>
+            </div>
+          ) : (
+            <>
+              {/* Step 1: Service */}
+              {bookingStep === 1 && (
+                <div>
+                  <p className="text-[15px] text-cream-muted mb-8 text-center">Choose a service</p>
+                  <div className="border-t border-dark-200">
+                    {services.map(s => (
+                      <button
+                        key={s.id}
+                        onClick={() => {
+                          setSelectedService(s.id);
+                          setBookingStep(2);
+                        }}
+                        className="w-full flex items-baseline justify-between py-6 border-b border-dark-200 text-left hover:bg-dark-200/50 transition-colors px-4 -mx-4"
+                      >
+                        <div>
+                          <p className="text-[18px] font-medium text-cream">{s.name}</p>
+                          <p className="text-[14px] text-cream-dim mt-1">{s.duration} min</p>
+                        </div>
+                        <span className="text-[20px] font-semibold text-brass tabular-nums">${s.price}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Step 2: Barber */}
+              {bookingStep === 2 && (
+                <div>
+                  <p className="text-[15px] text-cream-muted mb-8 text-center">Choose a barber</p>
+                  <div className="border-t border-dark-200">
+                    {barbers.map(b => (
+                      <button
+                        key={b.id}
+                        onClick={() => {
+                          setSelectedBarber(b.id);
+                          setBookingStep(3);
+                        }}
+                        className="w-full flex items-center justify-between py-6 border-b border-dark-200 text-left hover:bg-dark-200/50 transition-colors px-4 -mx-4"
+                      >
+                        <p className="text-[18px] font-medium text-cream">{b.name}</p>
+                        <p className="text-[14px] text-cream-dim">{b.skills.slice(0, 2).join(', ')}</p>
+                      </button>
+                    ))}
+                  </div>
+                  <button
+                    onClick={() => setBookingStep(1)}
+                    className="mt-8 text-[14px] text-cream-dim hover:text-brass transition-colors"
+                  >
+                    ← Back to services
+                  </button>
+                </div>
+              )}
+
+              {/* Step 3: Date & Time */}
+              {bookingStep === 3 && (
+                <div>
+                  <p className="text-[15px] text-cream-muted mb-8 text-center">Select date and time</p>
+                  <div className="mb-10">
+                    <label htmlFor="booking-date" className="block text-[13px] text-cream-dim mb-2">
+                      Date
+                    </label>
+                    <input
+                      id="booking-date"
+                      type="date"
+                      min={today}
+                      max={maxDate}
+                      value={selectedDate}
+                      onChange={e => {
+                        setSelectedDate(e.target.value);
+                        setSelectedTime('');
+                      }}
+                      className="w-full max-w-xs px-4 py-3 bg-dark-200 border border-dark-300 text-[15px] text-cream focus:outline-none focus:border-brass transition-colors"
+                    />
+                  </div>
+                  {selectedDate && availableSlots.length > 0 && (
+                    <div>
+                      <label className="block text-[13px] text-cream-dim mb-4">Available times</label>
+                      <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
+                        {availableSlots.map(slot => (
+                          <button
+                            key={slot}
+                            onClick={() => {
+                              setSelectedTime(slot);
+                              setBookingStep(4);
+                            }}
+                            className={`py-3 text-[14px] font-medium border transition-colors ${
+                              selectedTime === slot
+                                ? 'border-brass bg-brass text-void'
+                                : 'border-dark-300 hover:border-brass text-cream-muted'
+                            }`}
+                          >
+                            {slot}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  {selectedDate && availableSlots.length === 0 && (
+                    <p className="text-[15px] text-cream-muted">
+                      No available slots for this date. Please try another date.
+                    </p>
+                  )}
+                  <button
+                    onClick={() => setBookingStep(2)}
+                    className="mt-8 text-[14px] text-cream-dim hover:text-brass transition-colors"
+                  >
+                    ← Back to barber
+                  </button>
+                </div>
+              )}
+
+              {/* Step 4: Details */}
+              {bookingStep === 4 && (
+                <form onSubmit={handleBookingSubmit} className="space-y-6">
+                  <p className="text-[15px] text-cream-muted mb-2 text-center">Your details</p>
+                  <div className="p-6 bg-dark-200 text-[15px] space-y-2">
+                    <p>
+                      <span className="text-cream-dim">Service:</span>{' '}
+                      {services.find(s => s.id === selectedService)?.name} — $
+                      {services.find(s => s.id === selectedService)?.price}
+                    </p>
+                    <p>
+                      <span className="text-cream-dim">Barber:</span>{' '}
+                      {barbers.find(b => b.id === selectedBarber)?.name} · {selectedDate} at{' '}
+                      {selectedTime}
+                    </p>
+                  </div>
+                  <div>
+                    <label htmlFor="booking-name" className="block text-[13px] text-cream-dim mb-2">
+                      Name
+                    </label>
+                    <input
+                      id="booking-name"
+                      type="text"
+                      value={name}
+                      onChange={e => setName(e.target.value)}
+                      className="w-full px-4 py-3 bg-dark-200 border border-dark-300 text-[15px] text-cream focus:outline-none focus:border-brass transition-colors"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="booking-phone" className="block text-[13px] text-cream-dim mb-2">
+                      Phone
+                    </label>
+                    <input
+                      id="booking-phone"
+                      type="tel"
+                      value={phone}
+                      onChange={e => setPhone(e.target.value)}
+                      className="w-full px-4 py-3 bg-dark-200 border border-dark-300 text-[15px] text-cream focus:outline-none focus:border-brass transition-colors"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="booking-email" className="block text-[13px] text-cream-dim mb-2">
+                      Email
+                    </label>
+                    <input
+                      id="booking-email"
+                      type="email"
+                      value={email}
+                      onChange={e => setEmail(e.target.value)}
+                      className="w-full px-4 py-3 bg-dark-200 border border-dark-300 text-[15px] text-cream focus:outline-none focus:border-brass transition-colors"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="w-full py-5 bg-brass text-void text-[16px] font-semibold hover:bg-brass-light transition-colors"
+                  >
+                    Confirm Booking
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setBookingStep(3)}
+                    className="text-[14px] text-cream-dim hover:text-brass transition-colors"
+                  >
+                    ← Back to date and time
+                  </button>
+                </form>
+              )}
+            </>
+          )}
         </div>
       </section>
 
-      {/* Visit Section */}
-      <section className="py-32 bg-void">
+      {/* Contact Section */}
+      <section id="contact" className="py-32 bg-void">
         <div className="container-fluid">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div>
