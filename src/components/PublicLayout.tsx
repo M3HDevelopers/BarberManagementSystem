@@ -79,7 +79,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
         )}
       </header>
 
-      <main className="flex-1 pt-20">{children}</main>
+      <main className="flex-1">{children}</main>
 
       {/* Footer */}
       <footer className="bg-dark-100 border-t border-dark-200">
