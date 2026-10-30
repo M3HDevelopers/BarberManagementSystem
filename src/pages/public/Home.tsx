@@ -76,11 +76,11 @@ export default function Home() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=1920&q=80" 
-            alt="Professional barber at work"
+            src="https://image.qwenlm.ai/generated-images/1ec30e24-1bab-4ee0-8160-355117266043/_result.png" 
+            alt="Dark moody barbershop interior"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-void/70" />
+          <div className="absolute inset-0 bg-void/60" />
         </div>
         
         {/* Centered Content */}
