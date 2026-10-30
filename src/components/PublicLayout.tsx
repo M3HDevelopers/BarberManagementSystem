@@ -33,11 +33,11 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
             <a href="#home" className="flex items-center gap-3">
               <img 
                 src="https://image.qwenlm.ai/generated-images/f162a29f-0b16-4a22-80e2-cad4b5f65ec7/_result.png" 
-                alt="BarberPro Logo" 
+                alt="Iron & Blade Logo" 
                 className="w-10 h-10 object-contain"
               />
               <span className="font-display text-heading-md leading-none tracking-[-0.01em] text-cream">
-                BarberPro
+                Iron & Blade
               </span>
             </a>
 
@@ -87,7 +87,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
             <div className="md:col-span-5">
               <p className="font-display text-heading-lg leading-tight tracking-[-0.01em] text-cream mb-4">
-                BarberPro
+                Iron & Blade
               </p>
               <p className="text-body text-cream-muted leading-relaxed measure-prose text-pretty">
                 A barbershop built on the belief that a good haircut is not a transaction — it is a conversation between craft and client.
@@ -120,7 +120,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
 
           <div className="mt-16 pt-8 border-t border-dark-200 flex flex-col md:flex-row justify-between gap-4">
             <p className="text-caption text-cream-dim">
-              &copy; {new Date().getFullYear()} BarberPro. All rights reserved.
+              &copy; {new Date().getFullYear()} Iron & Blade. All rights reserved.
             </p>
             <p className="text-caption text-cream-dim">
               Crafted with care since 2009

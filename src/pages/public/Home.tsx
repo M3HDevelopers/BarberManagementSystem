@@ -73,12 +73,12 @@ export default function Home() {
     <div className="animate-fade-up">
       {/* Hero Section — Full Background with Centered Text */}
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image with Animation */}
+        {/* Background Image */}
         <div className="absolute inset-0">
           <img 
             src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=1920&q=80" 
             alt="Barber at work"
-            className="w-full h-full object-cover animate-slow-zoom"
+            className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-void/60" />
         </div>

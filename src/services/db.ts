@@ -122,7 +122,7 @@ function initializeDB(): Database {
     customers: [],
     appointments: [],
     settings: {
-      name: 'BarberPro',
+      name: 'Iron & Blade',
       address: '123 Main Street, Downtown',
       phone: '555-0100',
       email: 'info@barberpro.com',
