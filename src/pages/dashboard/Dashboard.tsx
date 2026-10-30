@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { ReportService, InvoiceService, ProductService, BarberService } from '../../services/db';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 

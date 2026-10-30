@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { useState, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import { AppointmentService, BarberService, CustomerService, ServiceService } from '../../services/db';
 import { AppointmentStatus } from '../../types';
 
