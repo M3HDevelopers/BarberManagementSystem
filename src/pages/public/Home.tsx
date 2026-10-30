@@ -80,10 +80,10 @@ export default function Home() {
             loop 
             muted 
             playsInline
-            poster="https://image.qwenlm.ai/generated-images/1ec30e24-1bab-4ee0-8160-355117266043/_result.png"
+            poster="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1920&q=80"
             className="w-full h-full object-cover"
           >
-            <source src="https://cdn.coverr.co/videos/coverr-a-barber-cutting-hair-2583/1080p.mp4" type="video/mp4" />
+            <source src="https://assets.mixkit.co/videos/1171/1171-720.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-void/60" />
         </div>
