@@ -83,8 +83,8 @@ export default function Home() {
             poster="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=1920&q=80"
             className="w-full h-full object-cover"
           >
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-barber-trimming-a-mans-beard-2717-large.mp4" type="video/mp4" />
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-man-getting-a-haircut-at-a-barbershop-2715-large.mp4" type="video/mp4" />
+            <source src="https://videos.pexels.com/video-files/5765827/5765827-uhd_2560_1440_30fps.mp4" type="video/mp4" />
+            <source src="https://videos.pexels.com/video-files/5765826/5765826-hd_1920_1080_30fps.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-void/60" />
         </div>
