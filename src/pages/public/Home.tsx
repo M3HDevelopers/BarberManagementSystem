@@ -85,23 +85,23 @@ export default function Home() {
         
         {/* Centered Content */}
         <div className="relative z-10 container-fluid text-center py-32">
-          <div className="max-w-4xl mx-auto">
-            <h1 className="font-display text-[56px] sm:text-[72px] lg:text-[104px] leading-[0.92] tracking-[-0.025em] text-cream mb-8">
+          <div className="max-w-5xl mx-auto">
+            <h1 className="font-display text-hero leading-[0.95] tracking-[-0.03em] text-cream mb-8 text-balance">
               Where craft meets conversation.
             </h1>
-            <p className="text-[18px] text-cream-muted leading-relaxed measure-prose mx-auto mb-12">
+            <p className="text-lead text-cream-muted leading-relaxed measure-prose mx-auto mb-12 text-pretty">
               Since 2009, we've built a barbershop on the belief that a good haircut is not a transaction — it is a conversation between craft and client. Three barbers. One standard. No shortcuts, no rush, no compromise.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="#booking"
-                className="inline-block px-10 py-5 bg-brass text-void text-[15px] font-semibold tracking-wide hover:bg-brass-light transition-colors"
+                className="inline-block px-10 py-5 bg-brass text-void text-body font-semibold tracking-wide hover:bg-brass-light transition-colors"
               >
                 Book Your Appointment
               </a>
               <a
                 href="#services"
-                className="inline-block px-10 py-5 border-2 border-cream/30 text-cream text-[15px] font-semibold tracking-wide hover:border-brass hover:text-brass transition-colors"
+                className="inline-block px-10 py-5 border-2 border-cream/30 text-cream text-body font-semibold tracking-wide hover:border-brass hover:text-brass transition-colors"
               >
                 View Services
               </a>
@@ -120,13 +120,13 @@ export default function Home() {
         <div className="container-fluid">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
             <div className="lg:col-span-5">
-              <p className="text-[13px] text-brass mb-4 tracking-wide">OUR SERVICES</p>
-              <h2 className="font-display text-[48px] lg:text-[64px] leading-[1.05] tracking-[-0.02em] text-cream">
+              <p className="text-caption text-brass mb-4 tracking-[0.08em] uppercase">Our Services</p>
+              <h2 className="font-display text-heading-xl leading-[1.1] tracking-[-0.02em] text-cream text-balance">
                 Crafted with care.
               </h2>
             </div>
             <div className="lg:col-span-5 lg:col-start-8 flex items-end">
-              <p className="text-[16px] text-cream-muted leading-relaxed measure-prose">
+              <p className="text-body text-cream-muted leading-relaxed measure-prose text-pretty">
                 Every service includes a consultation, hot towel finish, and styling. Prices reflect the time and attention each cut requires.
               </p>
             </div>
@@ -138,22 +138,22 @@ export default function Home() {
                 key={service.id}
                 className="grid grid-cols-12 gap-4 py-8 border-b border-dark-200 group hover:bg-dark-200/50 transition-colors px-4 -mx-4"
               >
-                <div className="col-span-1 text-[14px] text-cream-dim tabular-nums">
+                <div className="col-span-1 text-body-sm text-cream-dim tabular-nums">
                   {String(i + 1).padStart(2, '0')}
                 </div>
                 <div className="col-span-7 md:col-span-5">
-                  <h3 className="text-[20px] font-medium text-cream">
+                  <h3 className="text-heading-sm font-medium text-cream">
                     {service.name}
                   </h3>
-                  <p className="text-[14px] text-cream-dim mt-2 leading-relaxed">
+                  <p className="text-body-sm text-cream-dim mt-2 leading-relaxed">
                     {service.description}
                   </p>
                 </div>
-                <div className="col-span-4 md:col-span-3 text-[14px] text-cream-dim">
+                <div className="col-span-4 md:col-span-3 text-body-sm text-cream-dim">
                   {service.duration} minutes
                 </div>
                 <div className="col-span-12 md:col-span-3 md:text-right">
-                  <span className="text-[24px] font-semibold text-brass tabular-nums">
+                  <span className="text-heading-md font-semibold text-brass tabular-nums">
                     ${service.price}
                   </span>
                 </div>
@@ -168,13 +168,13 @@ export default function Home() {
         <div className="container-fluid">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
             <div className="lg:col-span-6">
-              <p className="text-[13px] text-brass mb-4 tracking-wide">THE TEAM</p>
-              <h2 className="font-display text-[48px] lg:text-[64px] leading-[1.05] tracking-[-0.02em] text-cream">
+              <p className="text-caption text-brass mb-4 tracking-[0.08em] uppercase">The Team</p>
+              <h2 className="font-display text-heading-xl leading-[1.1] tracking-[-0.02em] text-cream text-balance">
                 The barbers.
               </h2>
             </div>
             <div className="lg:col-span-4 lg:col-start-9 flex items-end">
-              <p className="text-[16px] text-cream-muted leading-relaxed measure-prose">
+              <p className="text-body text-cream-muted leading-relaxed measure-prose text-pretty">
                 Each barber has completed a minimum two-year apprenticeship. Specialties vary; standards do not.
               </p>
             </div>
@@ -197,15 +197,15 @@ export default function Home() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-void/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
-                  <h3 className="text-[24px] font-medium text-cream tracking-[-0.01em] mb-2">
+                  <h3 className="text-heading-md font-medium text-cream tracking-[-0.01em] mb-2">
                     {barber.name}
                   </h3>
-                  <p className="text-[14px] text-cream-dim leading-relaxed mb-6">
+                  <p className="text-body-sm text-cream-dim leading-relaxed mb-6">
                     {barber.skills.join(' · ')}
                   </p>
                   <a
                     href="#booking"
-                    className="inline-block text-[14px] text-brass font-semibold border-b-2 border-brass/50 hover:border-brass transition-colors pb-0.5"
+                    className="inline-block text-body-sm text-brass font-semibold border-b-2 border-brass/50 hover:border-brass transition-colors pb-0.5"
                   >
                     Book with {barber.name.split(' ')[0]}
                   </a>
@@ -220,26 +220,26 @@ export default function Home() {
       <section id="booking" className="py-32 bg-dark-100">
         <div className="container-fluid max-w-3xl">
           <div className="text-center mb-16">
-            <p className="text-[13px] text-brass mb-4 tracking-wide">BOOK NOW</p>
-            <h2 className="font-display text-[48px] lg:text-[64px] leading-[1.05] tracking-[-0.02em] text-cream mb-6">
+            <p className="text-caption text-brass mb-4 tracking-[0.08em] uppercase">Book Now</p>
+            <h2 className="font-display text-heading-xl leading-[1.1] tracking-[-0.02em] text-cream mb-6 text-balance">
               Book an appointment.
             </h2>
-            <p className="text-[16px] text-cream-muted">Step {bookingStep} of 4</p>
+            <p className="text-body text-cream-muted">Step {bookingStep} of 4</p>
           </div>
 
           {error && (
             <div className="p-4 bg-red-900/20 border border-red-500/30 mb-8">
-              <p className="text-[14px] text-red-300">{error}</p>
+              <p className="text-body-sm text-red-300">{error}</p>
             </div>
           )}
 
           {booked ? (
             <div className="text-center">
               <div className="w-20 h-20 mx-auto mb-8 bg-brass/20 flex items-center justify-center">
-                <span className="text-brass text-[48px]">✓</span>
+                <span className="text-brass text-display">✓</span>
               </div>
-              <h3 className="font-display text-[36px] text-cream mb-6">We'll see you soon.</h3>
-              <div className="text-left p-6 bg-dark-200 text-[15px] space-y-2 mb-10">
+              <h3 className="font-display text-heading-lg text-cream mb-6 text-balance">We'll see you soon.</h3>
+              <div className="text-left p-6 bg-dark-200 text-body space-y-2 mb-10">
                 <p>
                   <span className="text-cream-dim">Service:</span>{' '}
                   <span className="font-medium text-cream">
@@ -262,7 +262,7 @@ export default function Home() {
               </div>
               <button
                 onClick={resetBooking}
-                className="px-10 py-5 bg-brass text-void text-[15px] font-semibold hover:bg-brass-light transition-colors"
+                className="px-10 py-5 bg-brass text-void text-body font-semibold hover:bg-brass-light transition-colors"
               >
                 Book Another Appointment
               </button>
@@ -272,7 +272,7 @@ export default function Home() {
               {/* Step 1: Service */}
               {bookingStep === 1 && (
                 <div>
-                  <p className="text-[15px] text-cream-muted mb-8 text-center">Choose a service</p>
+                  <p className="text-body text-cream-muted mb-8 text-center">Choose a service</p>
                   <div className="border-t border-dark-200">
                     {services.map(s => (
                       <button
@@ -284,10 +284,10 @@ export default function Home() {
                         className="w-full flex items-baseline justify-between py-6 border-b border-dark-200 text-left hover:bg-dark-200/50 transition-colors px-4 -mx-4"
                       >
                         <div>
-                          <p className="text-[18px] font-medium text-cream">{s.name}</p>
-                          <p className="text-[14px] text-cream-dim mt-1">{s.duration} min</p>
+                          <p className="text-lead font-medium text-cream">{s.name}</p>
+                          <p className="text-body-sm text-cream-dim mt-1">{s.duration} min</p>
                         </div>
-                        <span className="text-[20px] font-semibold text-brass tabular-nums">${s.price}</span>
+                        <span className="text-heading-sm font-semibold text-brass tabular-nums">${s.price}</span>
                       </button>
                     ))}
                   </div>
@@ -297,7 +297,7 @@ export default function Home() {
               {/* Step 2: Barber */}
               {bookingStep === 2 && (
                 <div>
-                  <p className="text-[15px] text-cream-muted mb-8 text-center">Choose a barber</p>
+                  <p className="text-body text-cream-muted mb-8 text-center">Choose a barber</p>
                   <div className="border-t border-dark-200">
                     {barbers.map(b => (
                       <button
@@ -308,14 +308,14 @@ export default function Home() {
                         }}
                         className="w-full flex items-center justify-between py-6 border-b border-dark-200 text-left hover:bg-dark-200/50 transition-colors px-4 -mx-4"
                       >
-                        <p className="text-[18px] font-medium text-cream">{b.name}</p>
-                        <p className="text-[14px] text-cream-dim">{b.skills.slice(0, 2).join(', ')}</p>
+                        <p className="text-lead font-medium text-cream">{b.name}</p>
+                        <p className="text-body-sm text-cream-dim">{b.skills.slice(0, 2).join(', ')}</p>
                       </button>
                     ))}
                   </div>
                   <button
                     onClick={() => setBookingStep(1)}
-                    className="mt-8 text-[14px] text-cream-dim hover:text-brass transition-colors"
+                    className="mt-8 text-body-sm text-cream-dim hover:text-brass transition-colors"
                   >
                     ← Back to services
                   </button>
@@ -325,9 +325,9 @@ export default function Home() {
               {/* Step 3: Date & Time */}
               {bookingStep === 3 && (
                 <div>
-                  <p className="text-[15px] text-cream-muted mb-8 text-center">Select date and time</p>
+                  <p className="text-body text-cream-muted mb-8 text-center">Select date and time</p>
                   <div className="mb-10">
-                    <label htmlFor="booking-date" className="block text-[13px] text-cream-dim mb-2">
+                    <label htmlFor="booking-date" className="block text-caption text-cream-dim mb-2">
                       Date
                     </label>
                     <input
@@ -340,12 +340,12 @@ export default function Home() {
                         setSelectedDate(e.target.value);
                         setSelectedTime('');
                       }}
-                      className="w-full max-w-xs px-4 py-3 bg-dark-200 border border-dark-300 text-[15px] text-cream focus:outline-none focus:border-brass transition-colors"
+                      className="w-full max-w-xs px-4 py-3 bg-dark-200 border border-dark-300 text-body text-cream focus:outline-none focus:border-brass transition-colors"
                     />
                   </div>
                   {selectedDate && availableSlots.length > 0 && (
                     <div>
-                      <label className="block text-[13px] text-cream-dim mb-4">Available times</label>
+                      <label className="block text-caption text-cream-dim mb-4">Available times</label>
                       <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
                         {availableSlots.map(slot => (
                           <button
@@ -354,7 +354,7 @@ export default function Home() {
                               setSelectedTime(slot);
                               setBookingStep(4);
                             }}
-                            className={`py-3 text-[14px] font-medium border transition-colors ${
+                            className={`py-3 text-body-sm font-medium border transition-colors ${
                               selectedTime === slot
                                 ? 'border-brass bg-brass text-void'
                                 : 'border-dark-300 hover:border-brass text-cream-muted'
@@ -367,13 +367,13 @@ export default function Home() {
                     </div>
                   )}
                   {selectedDate && availableSlots.length === 0 && (
-                    <p className="text-[15px] text-cream-muted">
+                    <p className="text-body text-cream-muted">
                       No available slots for this date. Please try another date.
                     </p>
                   )}
                   <button
                     onClick={() => setBookingStep(2)}
-                    className="mt-8 text-[14px] text-cream-dim hover:text-brass transition-colors"
+                    className="mt-8 text-body-sm text-cream-dim hover:text-brass transition-colors"
                   >
                     ← Back to barber
                   </button>
@@ -383,8 +383,8 @@ export default function Home() {
               {/* Step 4: Details */}
               {bookingStep === 4 && (
                 <form onSubmit={handleBookingSubmit} className="space-y-6">
-                  <p className="text-[15px] text-cream-muted mb-2 text-center">Your details</p>
-                  <div className="p-6 bg-dark-200 text-[15px] space-y-2">
+                  <p className="text-body text-cream-muted mb-2 text-center">Your details</p>
+                  <div className="p-6 bg-dark-200 text-body space-y-2">
                     <p>
                       <span className="text-cream-dim">Service:</span>{' '}
                       {services.find(s => s.id === selectedService)?.name} — $
@@ -397,7 +397,7 @@ export default function Home() {
                     </p>
                   </div>
                   <div>
-                    <label htmlFor="booking-name" className="block text-[13px] text-cream-dim mb-2">
+                    <label htmlFor="booking-name" className="block text-caption text-cream-dim mb-2">
                       Name
                     </label>
                     <input
@@ -405,12 +405,12 @@ export default function Home() {
                       type="text"
                       value={name}
                       onChange={e => setName(e.target.value)}
-                      className="w-full px-4 py-3 bg-dark-200 border border-dark-300 text-[15px] text-cream focus:outline-none focus:border-brass transition-colors"
+                      className="w-full px-4 py-3 bg-dark-200 border border-dark-300 text-body text-cream focus:outline-none focus:border-brass transition-colors"
                       required
                     />
                   </div>
                   <div>
-                    <label htmlFor="booking-phone" className="block text-[13px] text-cream-dim mb-2">
+                    <label htmlFor="booking-phone" className="block text-caption text-cream-dim mb-2">
                       Phone
                     </label>
                     <input
@@ -418,12 +418,12 @@ export default function Home() {
                       type="tel"
                       value={phone}
                       onChange={e => setPhone(e.target.value)}
-                      className="w-full px-4 py-3 bg-dark-200 border border-dark-300 text-[15px] text-cream focus:outline-none focus:border-brass transition-colors"
+                      className="w-full px-4 py-3 bg-dark-200 border border-dark-300 text-body text-cream focus:outline-none focus:border-brass transition-colors"
                       required
                     />
                   </div>
                   <div>
-                    <label htmlFor="booking-email" className="block text-[13px] text-cream-dim mb-2">
+                    <label htmlFor="booking-email" className="block text-caption text-cream-dim mb-2">
                       Email
                     </label>
                     <input
@@ -431,19 +431,19 @@ export default function Home() {
                       type="email"
                       value={email}
                       onChange={e => setEmail(e.target.value)}
-                      className="w-full px-4 py-3 bg-dark-200 border border-dark-300 text-[15px] text-cream focus:outline-none focus:border-brass transition-colors"
+                      className="w-full px-4 py-3 bg-dark-200 border border-dark-300 text-body text-cream focus:outline-none focus:border-brass transition-colors"
                     />
                   </div>
                   <button
                     type="submit"
-                    className="w-full py-5 bg-brass text-void text-[16px] font-semibold hover:bg-brass-light transition-colors"
+                    className="w-full py-5 bg-brass text-void text-body font-semibold hover:bg-brass-light transition-colors"
                   >
                     Confirm Booking
                   </button>
                   <button
                     type="button"
                     onClick={() => setBookingStep(3)}
-                    className="text-[14px] text-cream-dim hover:text-brass transition-colors"
+                    className="text-body-sm text-cream-dim hover:text-brass transition-colors"
                   >
                     ← Back to date and time
                   </button>
@@ -459,28 +459,28 @@ export default function Home() {
         <div className="container-fluid">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div>
-              <p className="text-[13px] text-brass mb-4 tracking-wide">VISIT US</p>
-              <h2 className="font-display text-[48px] lg:text-[64px] leading-[1.05] tracking-[-0.02em] text-cream mb-12">
+              <p className="text-caption text-brass mb-4 tracking-[0.08em] uppercase">Visit Us</p>
+              <h2 className="font-display text-heading-xl leading-[1.1] tracking-[-0.02em] text-cream mb-12 text-balance">
                 Come see us.
               </h2>
               <div className="space-y-8">
                 <div>
-                  <p className="text-[13px] text-cream-dim mb-2">Address</p>
-                  <p className="text-[18px] text-cream">123 Main Street, Downtown</p>
+                  <p className="text-caption text-cream-dim mb-2">Address</p>
+                  <p className="text-lead text-cream">123 Main Street, Downtown</p>
                 </div>
                 <div>
-                  <p className="text-[13px] text-cream-dim mb-2">Phone</p>
-                  <p className="text-[18px] text-cream">555-0100</p>
+                  <p className="text-caption text-cream-dim mb-2">Phone</p>
+                  <p className="text-lead text-cream">555-0100</p>
                 </div>
                 <div>
-                  <p className="text-[13px] text-cream-dim mb-2">Email</p>
-                  <p className="text-[18px] text-cream">info@barberpro.com</p>
+                  <p className="text-caption text-cream-dim mb-2">Email</p>
+                  <p className="text-lead text-cream">info@barberpro.com</p>
                 </div>
               </div>
             </div>
 
             <div>
-              <p className="text-[13px] text-brass mb-4 tracking-wide">HOURS</p>
+              <p className="text-caption text-brass mb-4 tracking-[0.08em] uppercase">Hours</p>
               <div className="space-y-0 mt-12">
                 {[
                   { day: 'Monday', hours: '09:00 — 19:00' },
@@ -495,8 +495,8 @@ export default function Home() {
                     key={h.day}
                     className="flex items-baseline justify-between py-5 border-b border-dark-200"
                   >
-                    <span className="text-[16px] text-cream">{h.day}</span>
-                    <span className="text-[16px] text-cream-muted tabular-nums">
+                    <span className="text-body text-cream">{h.day}</span>
+                    <span className="text-body text-cream-muted tabular-nums">
                       {h.hours}
                     </span>
                   </div>

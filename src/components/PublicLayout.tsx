@@ -36,7 +36,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                 alt="BarberPro Logo" 
                 className="w-10 h-10 object-contain"
               />
-              <span className="font-display text-[24px] leading-none tracking-[-0.01em] text-cream">
+              <span className="font-display text-heading-md leading-none tracking-[-0.01em] text-cream">
                 BarberPro
               </span>
             </a>
@@ -46,7 +46,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-[14px] font-medium text-cream-muted hover:text-brass transition-colors"
+                  className="text-body-sm font-medium text-cream-muted hover:text-brass transition-colors"
                 >
                   {link.label}
                 </a>
@@ -55,7 +55,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
 
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden text-[14px] font-medium text-cream"
+              className="md:hidden text-body-sm font-medium text-cream"
               aria-label="Toggle menu"
             >
               {menuOpen ? 'Close' : 'Menu'}
@@ -86,28 +86,28 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
         <div className="container-fluid py-20">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
             <div className="md:col-span-5">
-              <p className="font-display text-[32px] leading-tight tracking-[-0.01em] text-cream mb-4">
+              <p className="font-display text-heading-lg leading-tight tracking-[-0.01em] text-cream mb-4">
                 BarberPro
               </p>
-              <p className="text-[15px] text-cream-muted leading-relaxed measure-prose">
+              <p className="text-body text-cream-muted leading-relaxed measure-prose text-pretty">
                 A barbershop built on the belief that a good haircut is not a transaction — it is a conversation between craft and client.
               </p>
             </div>
 
             <div className="md:col-span-3 md:col-start-7">
-              <p className="text-[13px] text-brass mb-4 tracking-wide">VISIT</p>
-              <p className="text-[15px] text-cream-muted leading-relaxed">{settings.address}</p>
-              <p className="text-[15px] text-cream-muted mt-2">{settings.phone}</p>
-              <p className="text-[15px] text-cream-muted mt-1">{settings.email}</p>
+              <p className="text-caption text-brass mb-4 tracking-[0.08em] uppercase">Visit</p>
+              <p className="text-body text-cream-muted leading-relaxed">{settings.address}</p>
+              <p className="text-body text-cream-muted mt-2">{settings.phone}</p>
+              <p className="text-body text-cream-muted mt-1">{settings.email}</p>
             </div>
 
             <div className="md:col-span-3">
-              <p className="text-[13px] text-brass mb-4 tracking-wide">HOURS</p>
+              <p className="text-caption text-brass mb-4 tracking-[0.08em] uppercase">Hours</p>
               <div className="space-y-1.5">
                 {settings.openingHours
                   .filter(h => h.start)
                   .map(h => (
-                    <div key={h.day} className="flex justify-between text-[14px]">
+                    <div key={h.day} className="flex justify-between text-body-sm">
                       <span className="text-cream-muted w-10">{h.day}</span>
                       <span className="text-cream tabular-nums">
                         {h.start} — {h.end}
@@ -119,10 +119,10 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
           </div>
 
           <div className="mt-16 pt-8 border-t border-dark-200 flex flex-col md:flex-row justify-between gap-4">
-            <p className="text-[12px] text-cream-dim">
+            <p className="text-caption text-cream-dim">
               &copy; {new Date().getFullYear()} BarberPro. All rights reserved.
             </p>
-            <p className="text-[12px] text-cream-dim">
+            <p className="text-caption text-cream-dim">
               Crafted with care since 2009
             </p>
           </div>
