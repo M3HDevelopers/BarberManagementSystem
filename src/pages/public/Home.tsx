@@ -91,7 +91,7 @@ export default function Home() {
         {/* Centered Content */}
         <div className="relative z-10 container-fluid text-center py-32">
           <div className="max-w-5xl mx-auto">
-            <h1 className="font-display text-[clamp(3.5rem,10vw,5.61rem)] leading-[0.95] tracking-[-0.03em] text-cream mb-8 text-balance">
+            <h1 className="font-display text-[clamp(4.5rem,12vw,7rem)] leading-[0.95] tracking-[-0.03em] text-cream mb-8 text-balance">
               Where craft meets conversation.
             </h1>
             <p className="text-lead text-cream-muted leading-relaxed measure-prose mx-auto mb-12 text-pretty">
