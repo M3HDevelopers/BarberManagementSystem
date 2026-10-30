@@ -503,6 +503,61 @@ export default function Home() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-void/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
+            
+            {/* New generated images */}
+            <div className="col-span-2 row-span-1 bg-dark-100 overflow-hidden group cursor-pointer relative">
+              <img 
+                src="https://image.qwenlm.ai/generated-images/aad84fe6-65b9-46e0-a911-69e1336fd5fc/_result.png" 
+                alt="Scissor cut technique"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-void/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </div>
+            
+            <div className="col-span-2 row-span-1 bg-dark-100 overflow-hidden group cursor-pointer relative">
+              <img 
+                src="https://image.qwenlm.ai/generated-images/2d277d36-0ede-4bd3-bce1-53d6cb02007a/_result.png" 
+                alt="Beard trimming with straight razor"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-void/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </div>
+            
+            <div className="col-span-2 row-span-1 bg-dark-100 overflow-hidden group cursor-pointer relative">
+              <img 
+                src="https://image.qwenlm.ai/generated-images/33a653f6-14a5-45a2-8389-74420864d7a3/_result.png" 
+                alt="Modern fade haircut"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-void/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </div>
+            
+            <div className="col-span-6 row-span-1 bg-dark-100 overflow-hidden group cursor-pointer relative">
+              <img 
+                src="https://image.qwenlm.ai/generated-images/c6cbbc34-4869-4f0d-92a4-4d1d514c4c50/_result.png" 
+                alt="Multiple barbers working"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-void/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </div>
+            
+            <div className="col-span-3 row-span-1 bg-dark-100 overflow-hidden group cursor-pointer relative">
+              <img 
+                src="https://image.qwenlm.ai/generated-images/81d8d259-6f0d-4944-9413-3483278c670b/_result.png" 
+                alt="Hair styling with pomade"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-void/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </div>
+            
+            <div className="col-span-3 row-span-1 bg-dark-100 overflow-hidden group cursor-pointer relative">
+              <img 
+                src="https://images.unsplash.com/photo-1634302086738-b6b4bd5f1f5f?w=600&q=80" 
+                alt="Precision beard work"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-void/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </div>
           </div>
         </div>
       </section>
