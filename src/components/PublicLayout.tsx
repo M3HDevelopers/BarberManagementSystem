@@ -32,9 +32,9 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
           <div className="flex items-center justify-between h-20">
             <a href="#home" className="flex items-center gap-3">
               <img 
-                src="https://image.qwenlm.ai/generated-images/f162a29f-0b16-4a22-80e2-cad4b5f65ec7/_result.png" 
+                src="https://image.qwenlm.ai/generated-images/6288b98a-03c6-4d45-ad72-e775d59c8800/_result.png" 
                 alt="Iron & Blade Logo" 
-                className="w-10 h-10 object-contain"
+                className="w-12 h-12 object-contain"
               />
               <span className="font-display text-heading-md leading-none tracking-[-0.01em] text-cream">
                 Iron & Blade
