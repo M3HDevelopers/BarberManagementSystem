@@ -9,8 +9,18 @@ export default function Home() {
   return (
     <div className="animate-fade-up">
       {/* Hero — Editorial, typography-led */}
-      <section className="bg-[var(--bg-ink)] text-[var(--text-on-ink)] relative overflow-hidden">
-        <div className="container-fluid">
+      <section className="relative overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1600&q=80" 
+            alt="Barbershop interior"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-[var(--bg-ink)]/85" />
+        </div>
+        
+        <div className="container-fluid relative z-10">
           <div className="py-28 md:py-40 lg:py-48 grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
             <div className="lg:col-span-7">
               <p className="text-[15px] text-[var(--text-on-ink-muted)] mb-10 measure-prose leading-relaxed">
@@ -142,12 +152,20 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16">
-            {barbers.map(barber => (
+            {barbers.map((barber, index) => {
+              const images = [
+                'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=800&q=80',
+                'https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=800&q=80',
+                'https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=800&q=80'
+              ];
+              return (
               <article key={barber.id}>
-                <div className="aspect-[4/5] bg-[var(--bg-ink)] mb-6 flex items-center justify-center overflow-hidden">
-                  <span className="font-display text-[96px] text-[var(--text-on-ink)]/10 tracking-[-0.04em] select-none">
-                    {barber.name.split(' ').map(n => n[0]).join('')}
-                  </span>
+                <div className="aspect-[4/5] bg-[var(--bg-ink)] mb-6 overflow-hidden">
+                  <img 
+                    src={images[index % images.length]} 
+                    alt={barber.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <h3 className="text-[22px] font-medium text-[var(--text-primary)] tracking-[-0.01em]">
                   {barber.name}
@@ -164,7 +182,8 @@ export default function Home() {
                   </Link>
                 </div>
               </article>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

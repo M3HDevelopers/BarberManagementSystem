@@ -24,13 +24,21 @@ export default function Barbers() {
 
         {/* Barber grid — editorial portrait layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-20">
-          {barbers.map(b => (
+          {barbers.map((b, index) => {
+            const images = [
+              'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=800&q=80',
+              'https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=800&q=80',
+              'https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=800&q=80'
+            ];
+            return (
             <article key={b.id}>
               {/* Portrait */}
-              <div className="aspect-[4/5] bg-[var(--bg-ink)] mb-6 flex items-center justify-center overflow-hidden">
-                <span className="font-display text-[104px] text-[var(--text-on-ink)]/10 tracking-[-0.04em] select-none">
-                  {b.name.split(' ').map(n => n[0]).join('')}
-                </span>
+              <div className="aspect-[4/5] bg-[var(--bg-ink)] mb-6 overflow-hidden">
+                <img 
+                  src={images[index % images.length]} 
+                  alt={b.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
 
               {/* Name */}
@@ -68,7 +76,8 @@ export default function Barbers() {
                 </Link>
               </div>
             </article>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>

@@ -7,21 +7,32 @@ export default function Services() {
   const categories = [...new Set(services.map(s => s.category))];
 
   return (
-    <div className="py-24 md:py-36 animate-fade-up">
-      <div className="container-fluid">
-        {/* Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
-          <div className="lg:col-span-6">
-            <h1 className="font-display text-[44px] md:text-[60px] leading-[1.02] tracking-[-0.02em] text-[var(--text-primary)]">
-              Services and pricing.
-            </h1>
+    <div className="animate-fade-up">
+      {/* Hero Image */}
+      <div className="relative h-[40vh] md:h-[50vh] overflow-hidden">
+        <img 
+          src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1600&q=80" 
+          alt="Barber tools and craftsmanship"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-[var(--bg-ink)]/40" />
+      </div>
+
+      <div className="py-24 md:py-36">
+        <div className="container-fluid">
+          {/* Header */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
+            <div className="lg:col-span-6">
+              <h1 className="font-display text-[44px] md:text-[60px] leading-[1.02] tracking-[-0.02em] text-[var(--text-primary)]">
+                Services and pricing.
+              </h1>
+            </div>
+            <div className="lg:col-span-4 lg:col-start-8 flex items-end">
+              <p className="text-[15px] text-[var(--text-secondary)] leading-relaxed measure-prose">
+                Every service includes a consultation, hot towel finish, and styling. Prices reflect the time and attention each cut requires. No hidden fees, no upsells.
+              </p>
+            </div>
           </div>
-          <div className="lg:col-span-4 lg:col-start-8 flex items-end">
-            <p className="text-[15px] text-[var(--text-secondary)] leading-relaxed measure-prose">
-              Every service includes a consultation, hot towel finish, and styling. Prices reflect the time and attention each cut requires. No hidden fees, no upsells.
-            </p>
-          </div>
-        </div>
 
         {/* Service list by category */}
         {categories.map(cat => (
@@ -70,6 +81,7 @@ export default function Services() {
           >
             Book an appointment
           </Link>
+        </div>
         </div>
       </div>
     </div>
