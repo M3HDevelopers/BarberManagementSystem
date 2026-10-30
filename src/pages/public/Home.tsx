@@ -309,6 +309,49 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Why Choose Us Section */}
+      <section className="py-24 bg-void">
+        <div className="container-fluid">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-16">
+              <p className="text-caption text-brass mb-4 tracking-[0.08em] uppercase">Why Choose Us</p>
+              <h2 className="font-display text-heading-xl leading-[1.1] tracking-[-0.02em] text-cream text-balance">
+                More than just a haircut.
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-6 bg-brass/10 flex items-center justify-center">
+                  <span className="font-display text-[32px] text-brass">01</span>
+                </div>
+                <h3 className="text-heading-sm font-medium text-cream mb-3">Expert Craftsmanship</h3>
+                <p className="text-body-sm text-cream-muted leading-relaxed">
+                  Every barber has years of experience and continuous training in the latest techniques.
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-6 bg-brass/10 flex items-center justify-center">
+                  <span className="font-display text-[32px] text-brass">02</span>
+                </div>
+                <h3 className="text-heading-sm font-medium text-cream mb-3">Premium Products</h3>
+                <p className="text-body-sm text-cream-muted leading-relaxed">
+                  We use only the finest professional-grade products for an exceptional grooming experience.
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-6 bg-brass/10 flex items-center justify-center">
+                  <span className="font-display text-[32px] text-brass">03</span>
+                </div>
+                <h3 className="text-heading-sm font-medium text-cream mb-3">Relaxed Atmosphere</h3>
+                <p className="text-body-sm text-cream-muted leading-relaxed">
+                  Enjoy a comfortable, welcoming environment where you can unwind and feel at ease.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Cream Section 2 - Testimonial */}
       <section className="py-32 bg-brass">
         <div className="container-fluid">
